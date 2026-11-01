@@ -132,14 +132,14 @@ a few cents, and the UI rounds to cents (often `$0.00`). Exact numbers: `opencod
 
 ## Troubleshooting
 
-| Problem | Try this |
-|---|---|
-| `Command 'opencode' not found` right after installing | Open a new terminal or `source ~/.bashrc`; or run `~/.opencode/bin/opencode` directly |
-| `npm ERR! code EACCES` | Use the curl installer instead of npm. Don't use `sudo npm` |
-| `401 Unauthorized` | Key not set in this terminal: `echo $UPB_AI_GATEWAY_KEY` |
-| Connection timeout / connection refused | You are outside the university network. Connect the university VPN (https://hilfe.uni-paderborn.de/VPN_einrichten) |
-| `401 Unauthorized` although the key is set | Your key may have expired. Create a new one at https://ai-gateway.upb.de |
-| Model not listed | Check the model id in `opencode.json` against the API Hub |
-| Agent can't run Python | Make sure `python` works in the same terminal, or tell the agent to use `python3` / `uv run python` |
-| Tool calls fail with this model | Some models are bad at tool calling. Switch back to `GPT-6 Luna` |
-| `Budget has been exceeded` | Your $20 for this month are used up. Switch to the free fallback model (`/models`) |
+| Problem                                               | Try this                                                                                                           |
+| ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| `Command 'opencode' not found` right after installing | Open a new terminal or `source ~/.bashrc`; or run `~/.opencode/bin/opencode` directly                              |
+| `npm ERR! code EACCES`                                | Use the curl installer instead of npm. Don't use `sudo npm`                                                        |
+| `401 Unauthorized`                                    | Key not set in this terminal: `echo $UPB_AI_GATEWAY_KEY`                                                           |
+| Connection timeout / connection refused               | You are outside the university network. Connect the university VPN (https://hilfe.uni-paderborn.de/VPN_einrichten) |
+| `401 Unauthorized` although the key is set            | Your key may have expired. Create a new one at https://ai-gateway.upb.de                                           |
+| Model not listed                                      | Check the model id in `opencode.json` against the API Hub                                                          |
+| Agent can't run Python                                | Make sure `python` works in the same terminal, or tell the agent to use `python3` / `uv run python`                |
+| Tool calls fail with this model                       | Some models are bad at tool calling. Switch back to `GPT-6 Luna`                                                   |
+| `Budget has been exceeded`                            | Your $20 for this month are used up. Switch to the free fallback model (`/models`)                                 |
