@@ -1,6 +1,6 @@
 """Image embedding helper. See common/embed_images.py for details.
 
-Usage: python task2_own_agent/embed_images.py site/index.html --images content/images
+Usage: python task2_own_agent/embed_images.py task2_own_agent/site/index.html --images content/images
 """
 
 import sys

@@ -1,6 +1,6 @@
 """Site checker for task2_own_agent (default mode: full). See common/site_checker.py for details.
 
-Usage: python task2_own_agent/check_site.py site/index.html [--content path/to/content] [--full|--basic] [--json]
+Usage: python task2_own_agent/check_site.py task2_own_agent/site/index.html [--content path/to/content] [--full|--basic] [--json]
 """
 
 import sys
