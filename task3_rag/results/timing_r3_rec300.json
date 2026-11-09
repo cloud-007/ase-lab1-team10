@@ -1,0 +1,8 @@
+{
+  "config": "r3_rec300",
+  "chunks": 2562,
+  "index_seconds": 62.76598811149597,
+  "mean_query_seconds": 0.5042674827575684,
+  "median_query_seconds": 0.08056163787841797,
+  "max_query_seconds": 62.73662447929382
+}

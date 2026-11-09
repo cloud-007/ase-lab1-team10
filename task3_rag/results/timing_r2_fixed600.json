@@ -1,0 +1,7 @@
+{
+  "config": "r2_fixed600",
+  "chunks": 1202,
+  "index_seconds": 18.538830280303955,
+  "mean_query_seconds": 0.510636789004008,
+  "max_query_seconds": 62.748270750045776
+}
