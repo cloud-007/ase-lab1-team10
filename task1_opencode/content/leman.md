@@ -20,7 +20,7 @@ Data Science, video gaming, and reading books
 
 <!-- one sentence -->
 
-People say I am a bit introverted, but I don't agree with thatö
+People say I am a bit introverted, but I don't agree with that
 
 ## What I think about AI in software engineering today
 

@@ -192,58 +192,79 @@ def build_html(profiles: list[dict[str, object]]) -> str:
   <meta name="theme-color" content="#fff8e7">
   <title>Team Byte-Sized Optimists | Agentic SE Lab</title>
   <style>
-    :root {{ color-scheme: light; --page: #fff8e7; --ink: #1d1d1f; --surface: #ffffff; --muted: #625d57; --accent: #e4007c; --line: #e8dfd0; --glow: #ffe0ef; }}
-    [data-theme="night"] {{ color-scheme: dark; --page: #14142b; --ink: #f4f1de; --surface: #20203c; --muted: #c7c3d8; --accent: #ff70b5; --line: #3c3a5a; --glow: #3c2342; }}
+    :root {{
+      color-scheme: light;
+      --page: #fff8e7; --ink: #1d1d1f; --surface: #ffffff; --muted: #625d57;
+      --accent: #e4007c; --line: #e8dfd0; --glow: #ffe0ef;
+      --space-1: .25rem; --space-2: .5rem; --space-3: .75rem; --space-4: 1rem;
+      --space-5: 1.5rem; --space-6: 2rem; --space-7: 3rem; --space-8: 4rem;
+      --radius-sm: .5rem; --radius-md: .875rem; --radius-lg: 1.25rem;
+      --shadow-card: 0 .25rem .75rem rgb(29 29 31 / .06), 0 1rem 2.5rem rgb(29 29 31 / .04);
+    }}
+    [data-theme="night"] {{
+      color-scheme: dark;
+      --page: #14142b; --ink: #f4f1de; --surface: #20203c; --muted: #c7c3d8;
+      --accent: #ff70b5; --line: #3c3a5a; --glow: #3c2342;
+      --shadow-card: 0 .5rem 2rem rgb(0 0 0 / .2);
+    }}
     * {{ box-sizing: border-box; }}
     html {{ scroll-behavior: smooth; }}
-    body {{ margin: 0; background: var(--page); color: var(--ink); font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.65; transition: background-color .25s ease, color .25s ease; }}
-    a {{ color: var(--accent); text-decoration-thickness: .12em; text-underline-offset: .18em; }}
-    .wrap {{ width: min(72rem, calc(100% - 2.5rem)); margin-inline: auto; }}
-    .topbar {{ display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding-block: 1.2rem; }}
-    .brand {{ font-weight: 850; letter-spacing: -.04em; text-decoration: none; color: var(--ink); }}
-    button {{ font: inherit; cursor: pointer; color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: .65rem 1rem; }}
-    button:hover {{ border-color: var(--accent); }}
-    .hero {{ padding: clamp(3.5rem, 9vw, 7.5rem) 0 4rem; position: relative; overflow: hidden; }}
-    .hero::after {{ content: "</>"; position: absolute; z-index: -1; right: 3%; top: 12%; font-size: clamp(7rem, 22vw, 17rem); line-height: 1; color: var(--glow); font-weight: 900; transform: rotate(-8deg); }}
-    .eyebrow {{ color: var(--accent); font-size: .78rem; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; margin: 0 0 .5rem; }}
-    h1 {{ max-width: 12ch; margin: 0; font-size: clamp(3rem, 8vw, 6.5rem); letter-spacing: -.075em; line-height: .98; }}
-    .hero-copy {{ max-width: 42rem; color: var(--muted); font-size: clamp(1.05rem, 2vw, 1.25rem); margin: 1.4rem 0 0; }}
-    .hero-copy strong {{ color: var(--ink); }}
-    .section-head {{ display: flex; justify-content: space-between; align-items: end; gap: 1rem; margin: 2rem 0 1.25rem; }}
-    h2 {{ margin: 0; font-size: clamp(1.65rem, 4vw, 2.5rem); letter-spacing: -.05em; line-height: 1.1; }}
+    body {{ margin: 0; background: var(--page); color: var(--ink); font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 1rem; line-height: 1.6; transition: background-color .25s ease, color .25s ease; }}
+    a {{ color: var(--accent); text-decoration-thickness: .1em; text-underline-offset: .2em; }}
+    a:hover {{ text-decoration-thickness: .16em; }}
+    :focus-visible {{ outline: .2rem solid var(--accent); outline-offset: .2rem; border-radius: var(--radius-sm); }}
+    .wrap {{ width: min(74rem, calc(100% - 3rem)); margin-inline: auto; }}
+    .topbar {{ display: flex; justify-content: space-between; align-items: center; gap: var(--space-4); padding-block: 1.1rem; border-bottom: 1px solid var(--line); }}
+    .brand {{ font-size: .95rem; font-weight: 800; letter-spacing: .035em; text-decoration: none; color: var(--ink); }}
+    button {{ font: inherit; font-size: .9rem; font-weight: 650; cursor: pointer; color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: .6rem .95rem; transition: border-color .18s ease, background-color .18s ease, transform .18s ease; }}
+    button:hover {{ border-color: var(--accent); transform: translateY(-1px); }}
+    .hero {{ padding: clamp(4rem, 10vw, 8rem) 0 clamp(3.5rem, 8vw, 6rem); position: relative; isolation: isolate; overflow: hidden; }}
+    .hero::after {{ content: "</>"; position: absolute; z-index: -1; right: 3%; top: 12%; font-size: clamp(7rem, 22vw, 17rem); line-height: 1; color: var(--glow); font-weight: 900; transform: rotate(-8deg); pointer-events: none; }}
+    .eyebrow {{ color: var(--accent); font-size: .75rem; font-weight: 750; letter-spacing: .12em; text-transform: uppercase; margin: 0 0 var(--space-2); }}
+    h1 {{ max-width: 12ch; margin: 0; font-size: clamp(3rem, 8vw, 6.25rem); font-weight: 760; letter-spacing: -.065em; line-height: 1; }}
+    .hero-copy {{ max-width: 43rem; color: var(--muted); font-size: clamp(1.05rem, 2vw, 1.2rem); line-height: 1.7; margin: var(--space-5) 0 0; }}
+    .hero-copy strong {{ color: var(--ink); font-weight: 700; }}
+    .section-head {{ display: flex; justify-content: space-between; align-items: end; gap: var(--space-4); margin: 0 0 var(--space-5); }}
+    h2 {{ margin: 0; font-size: clamp(1.65rem, 4vw, 2.35rem); font-weight: 720; letter-spacing: -.045em; line-height: 1.15; }}
     .section-head p {{ color: var(--muted); margin: 0; }}
-    .members {{ display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.1rem; padding-bottom: 5rem; }}
-    .member-card {{ background: var(--surface); border: 1px solid var(--line); border-radius: 1.4rem; padding: clamp(1rem, 2.5vw, 1.6rem); box-shadow: 0 .7rem 2rem rgb(30 20 50 / .05); }}
-    .member-top {{ display: grid; grid-template-columns: 6.5rem 1fr; align-items: center; gap: 1rem; padding-bottom: 1.1rem; border-bottom: 1px solid var(--line); }}
-    .portrait {{ display: block; width: 6.5rem; aspect-ratio: 1; object-fit: cover; border-radius: 1rem; background: var(--glow); }}
-    .member-top h2 {{ overflow-wrap: anywhere; }}
-    .member-top .eyebrow {{ font-size: .68rem; }}
-    .member-top p:not(.eyebrow) {{ color: var(--muted); margin: .5rem 0 0; }}
-    .member-details {{ display: grid; gap: .85rem; padding-top: 1rem; }}
+    .members {{ display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4); padding-bottom: clamp(4rem, 8vw, 6rem); }}
+    .member-card {{ min-width: 0; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: clamp(1.1rem, 2.5vw, 1.65rem); box-shadow: var(--shadow-card); }}
+    .member-top {{ display: grid; grid-template-columns: 6rem minmax(0, 1fr); align-items: center; gap: var(--space-4); padding-bottom: var(--space-4); border-bottom: 1px solid var(--line); }}
+    .portrait {{ display: block; width: 6rem; aspect-ratio: 1; object-fit: cover; border-radius: var(--radius-md); background: var(--glow); }}
+    .member-top h2 {{ overflow-wrap: anywhere; font-size: clamp(1.45rem, 3vw, 1.9rem); }}
+    .member-top .eyebrow {{ font-size: .68rem; margin-bottom: var(--space-1); }}
+    .member-top p:not(.eyebrow) {{ color: var(--muted); margin: var(--space-2) 0 0; }}
+    .member-details {{ display: grid; gap: var(--space-4); padding-top: var(--space-4); }}
     .member-details section {{ min-width: 0; }}
-    .member-details h3 {{ font-size: .76rem; color: var(--accent); text-transform: uppercase; letter-spacing: .1em; margin: 0 0 .25rem; }}
+    .member-details h3 {{ font-size: .72rem; line-height: 1.35; color: var(--accent); text-transform: uppercase; letter-spacing: .09em; font-weight: 750; margin: 0 0 var(--space-1); }}
     .member-details p, .member-details ul {{ margin: 0; color: var(--muted); }}
-    .member-details ul {{ padding-left: 1.2rem; }}
-    .hot-take {{ border-left: .2rem solid var(--accent); padding-left: .8rem; }}
+    .member-details ul {{ padding-left: 1.25rem; }}
+    .member-details li + li {{ margin-top: var(--space-1); }}
+    .hot-take {{ border-left: .2rem solid var(--accent); padding: var(--space-2) 0 var(--space-2) var(--space-3); }}
     .hot-take p {{ color: var(--ink); font-weight: 650; }}
     .quiet {{ color: var(--muted); }}
-    .future {{ padding: 4rem 0 5rem; border-top: 1px solid var(--line); }}
-    .future-grid {{ display: grid; grid-template-columns: 1fr 1.2fr; gap: 2rem; align-items: start; }}
+    .future {{ padding: clamp(3.5rem, 7vw, 5rem) 0; border-top: 1px solid var(--line); background: var(--page); }}
+    .future-grid {{ display: grid; grid-template-columns: 1fr 1.2fr; gap: clamp(1.5rem, 4vw, 3rem); align-items: start; }}
     .future h2 {{ max-width: 12ch; }}
-    .manifesto {{ background: var(--surface); border: 1px solid var(--line); border-radius: 1.4rem; padding: clamp(1.2rem, 3vw, 2rem); }}
-    .manifesto p {{ margin-top: 0; }}
+    .manifesto {{ background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: clamp(1.25rem, 3vw, 2rem); box-shadow: var(--shadow-card); }}
+    .manifesto p {{ color: var(--muted); margin-top: 0; }}
     .manifesto p:last-child {{ margin-bottom: 0; }}
-    .punchline {{ font-weight: 800; color: var(--accent); }}
-    footer {{ border-top: 1px solid var(--line); padding: 1.5rem 0 2.5rem; color: var(--muted); font-size: .9rem; }}
-    footer p {{ margin: .2rem 0; }}
+    .punchline {{ font-weight: 750; color: var(--accent) !important; }}
+    footer {{ border-top: 1px solid var(--line); padding: var(--space-5) 0 var(--space-7); color: var(--muted); font-size: .9rem; }}
+    footer p {{ margin: var(--space-1) 0; }}
     @media (max-width: 700px) {{
-      .wrap {{ width: min(100% - 1.25rem, 40rem); }}
-      .hero {{ padding-top: 3.2rem; }}
-      .members {{ grid-template-columns: 1fr; gap: .8rem; }}
+      .wrap {{ width: min(calc(100% - 1.5rem), 40rem); }}
+      .topbar {{ padding-block: .85rem; }}
+      .brand {{ font-size: .82rem; }}
+      button {{ padding: .55rem .75rem; }}
+      .hero {{ padding-top: 3.5rem; }}
+      .hero::after {{ right: -8%; top: 18%; opacity: .7; }}
+      .members {{ grid-template-columns: 1fr; gap: var(--space-3); }}
       .section-head {{ align-items: start; flex-direction: column; }}
-      .future-grid {{ grid-template-columns: 1fr; gap: 1rem; }}
-      .member-top {{ grid-template-columns: 5.25rem 1fr; }}
-      .portrait {{ width: 5.25rem; }}
+      .future-grid {{ grid-template-columns: 1fr; gap: var(--space-4); }}
+      .future h2 {{ max-width: 18ch; }}
+      .member-top {{ grid-template-columns: 5rem minmax(0, 1fr); }}
+      .portrait {{ width: 5rem; }}
     }}
     @media (prefers-reduced-motion: reduce) {{ *, *::before, *::after {{ scroll-behavior: auto !important; transition-duration: .01ms !important; }} }}
   </style>
@@ -282,7 +303,7 @@ def build_html(profiles: list[dict[str, object]]) -> str:
       const saved = localStorage.getItem('upb-theme');
       const initial = saved === 'night' ? 'night' : 'day';
       const applyTheme = (theme) => {{
-        root.dataset.theme = theme;
+         root.setAttribute('data-theme', theme);
         button.setAttribute('aria-pressed', String(theme === 'night'));
         button.setAttribute('aria-label', theme === 'night' ? 'Switch to day mode' : 'Switch to night mode');
         button.textContent = theme === 'night' ? '☀ Day mode' : '☾ Night mode';
