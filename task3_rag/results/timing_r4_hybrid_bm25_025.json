@@ -1,0 +1,12 @@
+{
+  "config": "r4_hybrid_bm25_025",
+  "chunks": 2562,
+  "bm25_index_seconds": 0.09242700005415827,
+  "dense_index_seconds": 114.41331958770752,
+  "embedding_index_cached": false,
+  "median_query_seconds": 0.11556124995695427,
+  "mean_query_seconds": 0.5789385266718454,
+  "query_embedding_calls": 150,
+  "bm25_weight": 0.25,
+  "dense_weight": 0.75
+}
