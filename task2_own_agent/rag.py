@@ -2,8 +2,7 @@
 
 The default search index embeds every document, including deprecated material, so
 document metadata and history are retained. Normal searches filter to ACTIVE
-documents before ranking; deprecated rules are never presented as current guidance.
-"""
+documents before ranking; deprecated rules are never presented as current guidance."""
 
 from __future__ import annotations
 
@@ -92,8 +91,10 @@ def _metadata(path: Path, text: str) -> _Document:
     title = title_match.group(1).strip() if title_match else path.stem
     status_match = _STATUS_RE.search(text)
     status_text = status_match.group(1).strip() if status_match else "unclear"
-    status = "deprecated" if re.search(r"\bdeprecated\b", status_text, re.I) else (
-        "active" if re.search(r"\bactive\b", status_text, re.I) else "unclear"
+    status = (
+        "deprecated"
+        if re.search(r"\bdeprecated\b", status_text, re.I)
+        else ("active" if re.search(r"\bactive\b", status_text, re.I) else "unclear")
     )
     category_match = _CATEGORY_RE.search(text)
     category = category_match.group(1).strip() if category_match else None
@@ -104,7 +105,9 @@ def _metadata(path: Path, text: str) -> _Document:
 
     replacement_document = None
     if status == "deprecated":
-        replacement_match = re.search(r"\breplaced\s+by\s+(SG-\d{2})\b", status_text, re.I)
+        replacement_match = re.search(
+            r"\breplaced\s+by\s+(SG-\d{2})\b", status_text, re.I
+        )
         if replacement_match:
             replacement_document = replacement_match.group(1).upper()
 
@@ -118,7 +121,13 @@ def _metadata(path: Path, text: str) -> _Document:
         source_path=str(path),
         historical_context=(
             document_id == "SG-05"
-            or bool(re.search(r"\b(deprecated|replaced by|old key|old footer|old palette|earlier|previously|version [12])\b", text, re.I))
+            or bool(
+                re.search(
+                    r"\b(deprecated|replaced by|old key|old footer|old palette|earlier|previously|version [12])\b",
+                    text,
+                    re.I,
+                )
+            )
         ),
         text=text.strip(),
     )
@@ -169,7 +178,9 @@ def _chunk_document(document: _Document, max_tokens: int) -> list[Chunk]:
         )
         current_blocks = []
 
-    blocks = [block.strip() for block in re.split(r"\n\s*\n", document.text) if block.strip()]
+    blocks = [
+        block.strip() for block in re.split(r"\n\s*\n", document.text) if block.strip()
+    ]
     for block in blocks:
         heading_match = re.match(r"^(#{1,6})\s+(.+?)\s*#*\s*$", block)
         if heading_match:
@@ -205,7 +216,9 @@ class StyleGuideRAG:
 
         self.style_guide_dir = Path(style_guide_dir)
         if not self.style_guide_dir.is_dir():
-            raise FileNotFoundError(f"Style-guide directory not found: {self.style_guide_dir}")
+            raise FileNotFoundError(
+                f"Style-guide directory not found: {self.style_guide_dir}"
+            )
         self.llm = llm or LLMClient()
         self.observation_tokens = observation_tokens
 
@@ -217,7 +230,11 @@ class StyleGuideRAG:
             raise ValueError(f"No Markdown documents found in {self.style_guide_dir}")
 
         self.documents = documents
-        self.chunks = [chunk for document in documents for chunk in _chunk_document(document, chunk_tokens)]
+        self.chunks = [
+            chunk
+            for document in documents
+            for chunk in _chunk_document(document, chunk_tokens)
+        ]
 
         # Include title and section in embedding input to improve short-rule retrieval,
         # but keep returned chunk.text as source Markdown rather than synthetic text.
@@ -242,9 +259,17 @@ class StyleGuideRAG:
     @staticmethod
     def _observation_piece(chunk: Chunk) -> str:
         heading = f" — {chunk.heading}" if chunk.heading else ""
-        replacement = f"; replaced by {chunk.replacement_document}" if chunk.replacement_document else ""
+        replacement = (
+            f"; replaced by {chunk.replacement_document}"
+            if chunk.replacement_document
+            else ""
+        )
         score = f"; cosine={chunk.score:.3f}" if chunk.score is not None else ""
-        history = "; historical/version context, not current guidance" if chunk.historical_context else ""
+        history = (
+            "; historical/version context, not current guidance"
+            if chunk.historical_context
+            else ""
+        )
         return (
             f"[{chunk.document_id} | {chunk.status.upper()}{history} | {chunk.title}{heading}{replacement}{score}]\n"
             f"{chunk.text}"
@@ -275,18 +300,26 @@ class StyleGuideRAG:
         if k < 1:
             return []
 
-        active_indices = [i for i, chunk in enumerate(self.chunks) if chunk.status == "active"]
+        active_indices = [
+            i for i, chunk in enumerate(self.chunks) if chunk.status == "active"
+        ]
         if not active_indices:
             return []
 
         query_vector = np.asarray(self.llm.embed([query]), dtype=np.float32)
         if query_vector.ndim != 2 or query_vector.shape[0] != 1:
-            raise ValueError(f"Embedding client returned an unexpected query shape: {query_vector.shape}")
+            raise ValueError(
+                f"Embedding client returned an unexpected query shape: {query_vector.shape}"
+            )
         if query_vector.shape[1] != self.embeddings.shape[1]:
-            raise ValueError("Query embedding dimension does not match style-guide embeddings")
+            raise ValueError(
+                "Query embedding dimension does not match style-guide embeddings"
+            )
         normalized_query = self._normalize_rows(query_vector)[0]
         scores = self._normalized_embeddings[active_indices] @ normalized_query
-        ranked = sorted(zip(active_indices, scores.tolist()), key=lambda pair: pair[1], reverse=True)
+        ranked = sorted(
+            zip(active_indices, scores.tolist()), key=lambda pair: pair[1], reverse=True
+        )
 
         results: list[Chunk] = []
         for index, score in ranked:
@@ -332,6 +365,9 @@ def format_observation(chunks: list[Chunk]) -> str:
         if chunk.status != "active":
             continue
         piece = StyleGuideRAG._observation_piece(chunk)
-        if count_tokens("\n\n---\n\n".join((*parts, piece))) <= DEFAULT_OBSERVATION_TOKENS:
+        if (
+            count_tokens("\n\n---\n\n".join((*parts, piece)))
+            <= DEFAULT_OBSERVATION_TOKENS
+        ):
             parts.append(piece)
     return "\n\n---\n\n".join(parts)
