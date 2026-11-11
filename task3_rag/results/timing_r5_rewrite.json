@@ -1,0 +1,15 @@
+{
+  "config": "r5_rewrite",
+  "chunks": 2562,
+  "bm25_weight": 0.25,
+  "dense_weight": 0.75,
+  "bm25_index_seconds": 0.0801449998980388,
+  "dense_index_seconds": null,
+  "embedding_index_cached": true,
+  "questions": 150,
+  "rewritten_questions": 32,
+  "query_embedding_calls": 182,
+  "median_query_seconds": 0.11986089998390526,
+  "mean_query_seconds": 0.6203417580000435,
+  "approx_query_tokens": "not measured; count original and rewritten queries separately"
+}

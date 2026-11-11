@@ -1,0 +1,6 @@
+{
+  "config": "r1_bm25",
+  "chunks": 2562,
+  "index_seconds": 0.1622142791748047,
+  "median_query_seconds": 0.008998632431030273
+}
