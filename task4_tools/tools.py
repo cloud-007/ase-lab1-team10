@@ -185,10 +185,17 @@ class ToolRegistry(ToolRegistryBase):
         return source
 
     def execute(
-        self, name: str, arguments: str, *, tool_call_id: str | None = None
+        self,
+        name: str,
+        arguments: str,
+        *,
+        tool_call_id: str | None = None,
+        deny_reason: str | None = None,
     ) -> ToolResult:
         started = time.perf_counter()
         try:
+            if deny_reason:
+                raise ValueError(deny_reason)
             if not isinstance(name, str) or name not in self._validators:
                 raise ValueError("Unknown tool: " + str(name)[:200])
             if not isinstance(arguments, str) or len(arguments) > MAX_ARGUMENT_CHARS:
