@@ -132,12 +132,9 @@ with that default, the same patch is also saved to `task4_tools/final.diff`.
 Explicit replay directories do not replace the canonical submitted patch.
 Default mock evidence goes to `logs/mock/`.
 
-`logs/sachin-baseline/` preserves the original committed evidence verbatim,
-with hashes and provenance. It is historical evidence, not proof of the final
-fresh run. The original records mixed a real run with already-passing tests,
-a separate mock diff, and a trace without complete correlation. The reviewed
-runs keep those experiments distinct. Public-test execution by a coding
-assistant is not a debugging-agent experiment.
+The submission keeps one final real run and a separate mock run. Earlier
+experiments remain recoverable from Git history. Public-test execution by a
+coding assistant is not a debugging-agent experiment.
 
 ### Model parameters and orchestration
 
