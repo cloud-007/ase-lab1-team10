@@ -12,6 +12,7 @@ dependencies = [
     "pydantic>=2.6",
     "pytest>=8.0",
     "tiktoken>=0.7",
+    "regex>=2024.7.24",
 ]
 
 [project.optional-dependencies]
