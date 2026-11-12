@@ -1,0 +1,102 @@
+{
+  "verified": true,
+  "tests": {
+    "ok": true,
+    "output": {
+      "exit_code": 0,
+      "collected": 25,
+      "passed": 25,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "failures": [],
+      "failures_omitted": 0
+    },
+    "error": null
+  },
+  "reports": {
+    "2026-01": {
+      "ok": true,
+      "expected_total_cents": 0,
+      "actual_total_cents": 0,
+      "expected_dates": [],
+      "actual_dates": []
+    },
+    "2026-02": {
+      "ok": true,
+      "expected_total_cents": 10030,
+      "actual_total_cents": 10030,
+      "expected_dates": [
+        "2026-02-07",
+        "2026-02-19",
+        "2026-02-26"
+      ],
+      "actual_dates": [
+        "2026-02-07",
+        "2026-02-19",
+        "2026-02-26"
+      ]
+    },
+    "2026-03": {
+      "ok": true,
+      "expected_total_cents": 36230,
+      "actual_total_cents": 36230,
+      "expected_dates": [
+        "2026-03-02",
+        "2026-03-05",
+        "2026-03-10",
+        "2026-03-14",
+        "2026-03-21",
+        "2026-03-28"
+      ],
+      "actual_dates": [
+        "2026-03-02",
+        "2026-03-05",
+        "2026-03-10",
+        "2026-03-14",
+        "2026-03-21",
+        "2026-03-28"
+      ]
+    },
+    "2026-04": {
+      "ok": true,
+      "expected_total_cents": 11920,
+      "actual_total_cents": 11920,
+      "expected_dates": [
+        "2026-04-02",
+        "2026-04-11",
+        "2026-04-18"
+      ],
+      "actual_dates": [
+        "2026-04-02",
+        "2026-04-11",
+        "2026-04-18"
+      ]
+    }
+  },
+  "changed_files": [
+    "src/tinyledger/io_csv.py",
+    "src/tinyledger/ledger.py",
+    "src/tinyledger/money.py"
+  ],
+  "protected_changes": [],
+  "final_hashes": {
+    "ISSUE.md": "1fa61f9ff8a66602a9c6f14a4b9b7118c87438eaff67fabb399246936f240986",
+    "README.md": "e2560d2e395317e5be010bf090c0f4a28bc5d048e2866cccd79744e9e468631d",
+    "conftest.py": "3b7264b1bb16a5d5916d50654733ae62d935ad4ef64b443613db3f3ce3781c36",
+    "data/sample.csv": "9b7ab7ad503c2e0b42974884b5d7ec7b2e25f1a6b85968962c2b51e20553d310",
+    "pytest.ini": "8fa307d1ef787f3822b949dc90f1b3c405769c4eb97bb2e813b271109d9d8a90",
+    "src/tinyledger/__init__.py": "32b66de7ddd649f6da40b73654321784f0a6c7acb1dc1e7e28989116309b466a",
+    "src/tinyledger/__main__.py": "13a1a5b340cdcfc1902b62be90e508c7c71886000d5bf087e7854aadf09fb35e",
+    "src/tinyledger/cli.py": "71cf33a40b1c4e05362d34921a85e287f79439c55e25408e03e088d5fae5986a",
+    "src/tinyledger/io_csv.py": "f2e5a38728a7e08b12b29eead719f46ec684103683fb74e239d4c806cacdfb6c",
+    "src/tinyledger/ledger.py": "902310692482a103d06accf3764ca197bfca6d622b82857879723e2acfaf1d72",
+    "src/tinyledger/models.py": "16252df668d60dfe150546ffae9c73f7db3864607527b386aa1e16ae9f865539",
+    "src/tinyledger/money.py": "92d685e0464abda96894e5597887053d07ed8c8c5d4f1ceca8648a13c154ea07",
+    "src/tinyledger/settle.py": "700b30a7c4b91dfcfb6a5fee134c38d692a40003d27c0666e36fc95b62a122a0",
+    "tests/test_io_csv.py": "deb65a2856826beb1244ff5bede6cb2541c8d936a4fa84d2c719562487df3c9c",
+    "tests/test_ledger.py": "af8287894574ff89414c6d5278ea6ffbabfc66f362c377db55ed5f5322608046",
+    "tests/test_money.py": "ae8a3f32240fd931f4733f8e93df939da219711c781c1b030715f69db92f613a",
+    "tests/test_settle.py": "904e2494b0f0267a758cf5c77f8eab898314d39f22a70a087d1c9ca1ea98d548"
+  }
+}
