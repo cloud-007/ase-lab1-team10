@@ -1,0 +1,10 @@
+{
+  "source_commit": "aa3c509992b67addc0fe3cef31374469a6723c7a",
+  "note": "Original teammate evidence, preserved verbatim. Its trace and diff do not establish one fresh real run.",
+  "files": {
+    "logs/mock_llm.jsonl": "46bceeaeee4e236f53442c81bd31b046a9c44059dfbd6f212a5ded4e6ea28483",
+    "logs/real_llm.jsonl": "938035b0515dc597f638e690e0136931b7a29f9e214cdca849eb667ce97e1a2e",
+    "logs/trace.jsonl": "373e8bfd8b2a609c3988cb2fd5a0643f9b5b98f41a2fafe22d1be66e4cdae5ce",
+    "final.diff": "98dee9f0f176c736a6bc13682f21120b674dd19a53704975c18161ad4f76416e"
+  }
+}
