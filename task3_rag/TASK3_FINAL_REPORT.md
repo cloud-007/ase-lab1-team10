@@ -107,15 +107,16 @@ The aligned development answers are saved in `task3_rag/results/answers_r4_align
 
 Validation confirmed that all 100 test predictions have unique question IDs, five distinct retrieved document IDs per question, and non-empty answers. All 500 retrieved document IDs were also checked against the 932-document corpus and found to be valid. Test ground truth is unavailable, so no test correctness or recall score is claimed.
 
+
 ## Final checklist
 
-- [ ] Add this report and detailed manual-review file to the repository.
-- [ ] Have a teammate independently verify ten judge decisions and record sign-off.
-- [ ] Confirm R5 meets the rubric's allowed query-rewriting option; check the second retrieval logic.
-- [ ] Confirm any additional token estimates required by the lab manual and label unmeasured quantities honestly.
-- [ ] Merge dependent Task 3 PRs in order, verify the combined `main` branch.
-- [ ] Check final ZIP for required code/results/predictions, and exclude `.env`, `.venv`, caches, logs and temporary ZIPs.
-- [ ] Record the Task 3 video segment and mention AI assistance and its role.
+- [x] Add the final report and `task3_manual_review_and_failures.md` to the repository. Both files are present in `main`.
+- [ ] Have a teammate independently verify ten judge decisions and record sign-off. The analysis file exists, but sign-off has not been confirmed.
+- [ ] Confirm R5 meets the allowed query-rewriting option and check its second retrieval step.
+- [ ] Confirm whether additional token estimates are required. The measured test-generation tokens and costs are reported above; other quantities are not fully measured.
+- [ ] Merge and verify the remaining Task 3 changes. The original Task 3 files are in `main`, but the corrected R4 evaluation from issue #21 is still awaiting PR approval.
+- [ ] Check the final submission ZIP for required code, results, and `predictions_test.jsonl`. Exclude secrets (`.env`), virtual environments, embedding caches, and temporary ZIP files. Optional local debugging logs may be excluded, but **keep the required Task 2 complete-run logs and Task 4 execution/verification traces**.
+- [ ] Record the Task 3 video segment and explain how AI assistance was used.
 
 ## Two-minute video script (approximate)
 
