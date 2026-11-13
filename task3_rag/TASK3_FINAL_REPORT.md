@@ -79,13 +79,13 @@ The ten judge-check examples and five failure cases in task3_manual_review_and_f
 
 | Question | Likely cause | Observation |
 |---|---|---|
-| dev008 | Generation/context interpretation | Retrieved value 10, but answer was incorrect |
+| dev008 | Context/chunk selection; generation contribution uncertain | Document d0171 was retrieved, but the selected context omitted its authoritative `Default | 10` row and included only an example `interval_s = 10` |
 | dev025 | Retrieval / missing second hop | Incident retrieved, linked error's permanent fix not supplied |
 | dev030 | Retrieval | Other incidents retrieved instead of target incident |
 | dev068 | Retrieval | Related discussion retrieved, authoritative error fix missing |
 | dev087 | Retrieval and generation | Setting from wrong component used in answer |
 
-The team's manual verification and sign-off on ten judge decisions remains necessary; a prepared analysis file alone does not prove a human team member reviewed it.
+Mohammed Awez confirmed agreement with all ten original-R4 judge decisions on 2026-11-13. The supporting evidence and explanations are documented in `task3_manual_review_and_failures.md`. These cases belong to the original R4 run, not the aligned R4 evaluation.
 
 ## Deployment recommendation
 
