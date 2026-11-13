@@ -105,6 +105,8 @@ class LLMClient:
         self.total_completion_tokens = 0
         self.total_cost_usd = 0.0
         self.n_calls = 0
+        # Expose termination metadata without changing existing message-returning APIs.
+        self.last_finish_reason: str | None = None
 
     # ------------------------------------------------------------------ chat
 
@@ -151,6 +153,7 @@ class LLMClient:
         start = time.time()
         response, meta = self._with_retries(lambda: self._create(self._client.chat.completions, **params))
         duration = time.time() - start
+        self.last_finish_reason = response.choices[0].finish_reason
 
         usage = getattr(response, "usage", None)
         prompt_tokens = getattr(usage, "prompt_tokens", None) if usage else None

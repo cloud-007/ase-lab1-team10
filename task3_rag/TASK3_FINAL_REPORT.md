@@ -89,8 +89,6 @@ The team's manual verification and sign-off on ten judge decisions remains neces
 
 ## Deployment recommendation
 
-## Deployment recommendation
-
 R4 hybrid with BM25 weight .25 and dense weight .75 remains our selected retrieval configuration because it achieved the highest observed overall retrieval recall (.642) and precision (.615) among the tested configurations.
 
 However, after aligning the development and test generation pipelines, R4 achieved only .500 answer correctness, compared with .560 for R1 and .620 for the original, mismatched R4 evaluation.
@@ -99,7 +97,6 @@ Therefore, R4 is our preferred retrieval configuration, but we cannot claim that
 
 Further improvements should focus on reducing unnecessary abstentions, retrieving related documents for multi-hop questions, and testing whether different retrieval strategies work better for different question types.
 
-## Test predictions
 ## Test predictions
 
 The file `task3_rag/predictions_test.jsonl` contains 100 test predictions. Validation confirmed 100 unique question IDs, five unique retrieved document IDs per question, and non-empty answers.
