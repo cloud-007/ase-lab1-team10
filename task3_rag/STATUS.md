@@ -1,8 +1,16 @@
 # Task 3 – RAG under the microscope: scope and status
 
+**Historical snapshot — not the current Task 3 progress tracker.**
+
+This document records the team's earlier progress, before R4, R5, judging, and test predictions were completed. The unfinished items below describe the state at that time and should not be treated as current.
+
+For the latest Task 3 results, remaining checks, and submission status, see [TASK3_FINAL_REPORT.md](TASK3_FINAL_REPORT.md).
+
+Issue #21 separately corrects the R4 development evaluation to match the test-generation pipeline. Until that PR is merged, the original R4 score in the report should not be treated as the final aligned result.
+
 Group 10 · Agentic Software Engineering WS 2026/27 · Lab 1 · Status written by Akshay (role A) · Branch: `task3-chunking-embeddings`
 
-> The lab's own instructions are in `README.md` in this folder. This file is the group's overview and progress tracker.
+> > The lab instructions are in `README.md`. This file records our earlier progress; the current Task 3 status is in [TASK3_FINAL_REPORT.md](TASK3_FINAL_REPORT.md).
 
 ## 1. What Task 3 is (14 points)
 
