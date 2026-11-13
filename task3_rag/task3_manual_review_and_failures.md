@@ -1,6 +1,12 @@
-# Task 3: R4 judge review and failure analysis
+# Task 3: Original R4 judge review and failure analysis
 
-Source: uploaded `task3_final_results.zip`. Review performed against the supplied ground truth, generated answer, judge reason, and the five actual generation contexts. This is an assistant-assisted review; a team member should independently confirm ten decisions to meet the manual-check requirement.
+**Evaluation status: Original R4 run — before pipeline alignment (Issue #21).**
+
+This document records ten judge-check examples and five failure cases from the original R4 evaluation, which reported 0.620 correctness. The original development pipeline did not match the test-prediction pipeline. After aligning them, R4 correctness was 0.500, compared with 0.560 for R1.
+
+The examples below are kept as evidence of the original run. They should not be treated as failure cases from the aligned evaluation. For example, the original dev087 answer used `snapshotter.max_connections`, while the aligned run abstained.
+
+Source: uploaded `task3_final_results.zip`. The analysis used the supplied ground truth, generated answers, judge reasons, and five generation contexts. This was an assistant-assisted review; a team member still needs to independently confirm ten judge decisions to meet the manual-check requirement.
 
 ## Ten judge decisions to check
 
@@ -103,22 +109,36 @@ The classification is based on whether the required answer evidence appears in t
 
 ## End-to-end comparison (50 questions each)
 
-| Metric | R1 BM25 | R4 hybrid |
-|---|---:|---:|
-| Correctness | 0.560 | 0.620 |
-| Faithfulness, non-abstentions only | 0.988 | 0.950 |
-| Relevance | 0.557 | 0.595 |
-| Abstention rate | 0.600 | 0.500 |
+The original R4 results are shown alongside the aligned R4 results so the difference is clear. The original R4 run did not use the same pipeline as test prediction, so its 0.620 correctness should not be used as the final R4 result.
 
-Category correctness: identifier R1 0.8 / R4 0.5; paraphrase 0.3 / 0.9; version 0.7 / 0.7; unanswerable 1.0 / 1.0; multi-hop 0.0 / 0.0.
+| Metric | R1 BM25 | Original R4 | Aligned R4 |
+|---|---:|---:|---:|
+| Correctness | 0.560 | 0.620 | 0.500 |
+| Faithfulness, non-abstentions only | 0.988 | 0.950 | 0.956 |
+| Relevance | 0.557 | 0.595 | 0.502 |
+| Abstention rate | 0.600 | 0.500 | 0.660 |
+
+Category correctness:
+
+| Category | R1 | Original R4 | Aligned R4 |
+|---|---:|---:|---:|
+| Identifier | 0.800 | 0.500 | 0.100 |
+| Paraphrase | 0.300 | 0.900 | 0.900 |
+| Multi-hop | 0.000 | 0.000 | 0.000 |
+| Version | 0.700 | 0.700 | 0.500 |
+| Unanswerable | 1.000 | 1.000 | 1.000 |
 
 ## Interpretation and recommendation
 
-Recommend R4 (0.25 BM25 + 0.75 dense) for overall performance: higher development recall and higher end-to-end correctness than R1. R1 remains stronger for exact identifier questions. R5 query rewriting was evaluated but did not improve overall recall (0.642 for both R4 and R5), so its additional embedding calls are not justified for deployment. Multi-hop performance remains unacceptable for either candidate and requires explicit second-hop retrieval before production use.
+R4 with 0.25 BM25 and 0.75 dense weighting gave the best measured retrieval results, with 0.642 recall and 0.615 precision. However, after aligning the development and test-prediction pipelines, R4 achieved 0.500 answer correctness, below R1's 0.560.
+
+We therefore recommend R4 as the strongest retrieval configuration tested, but not as the best end-to-end answering system. The aligned R4 run performed well on paraphrase questions but struggled with exact identifiers and multi-hop questions.
+
+R5 query rewriting did not improve overall retrieval recall compared with R4 (both scored 0.642), despite requiring additional embedding calls. Future work should focus on exact identifier retrieval, reducing unnecessary abstentions, and retrieving linked documents for multi-hop questions.
 
 ## Remaining deliverables
 
 - Confirm the ten judge decisions manually as a team member; record reviewer and date.
 - Complete token-per-query estimates and cost/latency table; distinguish cached and uncached indexing.
-- Generate and validate 100 test predictions in the exact prescribed schema.
+- [x] Generate and validate 100 test predictions, including checking all 500 retrieved document IDs against the 932-document corpus.
 - Update submission README/STATUS and record brief video explanation.
