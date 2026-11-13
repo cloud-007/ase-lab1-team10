@@ -67,3 +67,48 @@ print(
     "with historical token count unavailable"
 )
 print("R5 dense indexing: cached; no new index embedding calls in this run")
+
+# Candidate-based approximation, not a reconstruction of historical rewrites.
+# R5 produces one of these two templates using identifiers found in the corpus.
+from r5 import ERROR, SETTING
+
+candidate_rewrites = set()
+for chunk in configs["r3_rec300"]:
+    content = chunk["text"]
+    for code in ERROR.findall(content):
+        candidate_rewrites.add(
+            f"{code} error catalogue recommended permanent fix resolution"
+        )
+    for setting in SETTING.findall(content):
+        candidate_rewrites.add(
+            f"{setting} current default configuration version"
+        )
+
+candidate_counts = sorted(count_tokens(q) for q in candidate_rewrites)
+if not candidate_counts:
+    raise ValueError("No R5 rewrite candidates found")
+
+rewrite_count = r5_timing["rewritten_questions"]
+median_candidate = candidate_counts[len(candidate_counts) // 2]
+estimated_extra = rewrite_count * median_candidate
+
+print()
+print(f"R5 candidate rewrite texts: {len(candidate_counts)}")
+print(
+    f"R5 candidate token range: "
+    f"{candidate_counts[0]}-{candidate_counts[-1]} per rewrite"
+)
+print(f"R5 candidate median: {median_candidate} tokens")
+print(
+    f"R5 illustrative additional tokens: "
+    f"{rewrite_count} * {median_candidate} = {estimated_extra}"
+)
+print(
+    f"R5 illustrative total query tokens: "
+    f"{query_tokens + estimated_extra}"
+)
+print(
+    f"R5 illustrative average per question: "
+    f"{(query_tokens + estimated_extra) / len(questions):.2f}"
+)
+print("R5 actual historical rewritten-query tokens: unavailable")

@@ -28,6 +28,8 @@ R3 recursive 300 and 1000 both reach .562 overall recall; recursive 300 has high
 
 ## Indexing and query latency
 
+The indexing times and query latencies below are **measured** values from `task3_rag/results/timing_*.json`. Query times measure **retrieval only**, not answer generation or judging. R2's median was not recorded and cannot be recovered from its saved summary. R4's three timing files repeat measurements from one shared run, not three separate indexing runs.
+
 | Configuration | Indexing time | Median retrieval query time | Caveat |
 |---|---:|---:|---|
 | R1 BM25 | 0.162 s | 0.009 s | Local index |
@@ -52,9 +54,15 @@ Token estimates below are reproducible with `python task3_rag/estimate_tokens.py
 | R3 recursive 600 | 144,143 | 2,758 | None |
 | R3 recursive 1000 | 137,230 | 2,758 | None |
 | R4 hybrid .25/.50/.75 | 181,271 shared | 2,758 shared | None |
-| R5 rewrite | 0 newly embedded (cached R3 recursive-300 index) | 2,758 | 32 rewritten-query embedding calls; exact historical text and token total unavailable |
+| R5 rewrite | 0 newly embedded (cached R3 recursive-300 index) | 2,758 | 32 rewrites; 256 illustrative extra tokens (3,014 total query tokens); historical total unavailable |
 
-R4's three weight settings reuse one dense index and one set of 150 original-query embeddings; these totals must **not** be multiplied by three. R5 reuses the cached dense index and embeds 150 original questions plus 32 rule-based rewritten queries. The 32 rewritten query texts were not retained, so their exact historical token usage is unavailable. R1 uses local BM25 and does not send indexing or retrieval queries to the embedding API. For R2, R3 and R4, the estimated original-query embedding usage averages **18.39 tokens per question** (2,758 / 150). R5 has the same original-query average, plus additional rewritten-query tokens for 32 of the 150 questions; its complete per-query average is unavailable. R1 has **0 API embedding tokens per query**, although its locally processed questions contain text. These estimates cover **retrieval indexing and query embeddings only**; they exclude answer generation and judging.
+R4's three weight settings reuse one dense index and one set of 150 query embeddings. Neither should be counted three times. R5 reuses the cached R3 recursive-300 dense index and embeds 150 original questions plus 32 rewritten queries.
+
+**Query-token scope:** The estimates above cover indexing text and retrieval-query embeddings only. They exclude answer generation and judging, which are reported separately below. R1 uses local BM25 and therefore has zero embedding API tokens, not zero locally processed text. R2, R3 and R4 average 18.39 estimated original-query embedding tokens per question.
+
+**R5 rewrite estimate:** The 32 historical rewritten texts were not saved, so their actual token total is unavailable. The script builds 215 candidate rewrites from corpus identifiers and R5 templates (6-11 tokens each; candidate median 8). Assuming 8 tokens for each of the 32 rewrites gives 256 additional tokens, or **3,014 estimated query embedding tokens across 150 questions (20.09 per question)**. This is an illustrative calculation, not a recovered measurement or a proven range for the historical queries.
+
+Cost reproduction: run `python task3_rag/summarize_gateway_logs.py` with these four local files: `logs/generate_r1_bm25.jsonl`, `logs/generate_r4_hybrid_bm25_025_aligned.jsonl`, `logs/judge_answers_r1_bm25.jsonl`, and `logs/judge_answers_r4_aligned.jsonl`. These logs contain prompts and retrieved context, so they are not committed. Historical costs cannot be independently recalculated from the repository alone without the corresponding logs.
 
 The saved gateway logs separately provide **measured** token usage and costs for answer generation and LLM judging on the 50-question development evaluation. Completion token totals already include any reported reasoning tokens.
 
