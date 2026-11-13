@@ -48,26 +48,34 @@ A complete test-prediction run processed 100 questions, made 200 gateway calls, 
 
 The same stratified 50-question development sample was used for R1 and R4, with `judge.py --sample 50`. Faithfulness excludes abstentions.
 
-| Measure | R1 BM25 | R4 hybrid .25 |
-|---|---:|---:|
-| Correctness | .560 (28/50) | **.620 (31/50)** |
-| Faithfulness, non-abstentions | .988 | .950 |
-| Answer relevance | .557 | **.595** |
-| Abstention rate | .600 | **.500** |
+During the pipeline alignment work (issue #21), we found that the original R4 development answers and test predictions were generated differently. The original development pipeline selected document IDs from saved retrieval results and then chose a chunk within each document using BM25. The test pipeline directly ranked chunks using hybrid scores and selected the highest-ranked chunk from each of five different documents. The prompts and answer-token limits also differed.
 
-| Category | R1 correct / 10 | R4 correct / 10 |
-|---|---:|---:|
-| Identifier | 8 | 5 |
-| Paraphrase | 3 | 9 |
-| Multi-hop | 0 | 0 |
-| Version | 7 | 7 |
-| Unanswerable | 10 | 10 |
+We introduced a shared R4 pipeline so development evaluation and test generation use the same chunk selection, prompt, and 400-token answer limit. We regenerated and evaluated the 50 development answers. The original evaluation results are preserved for comparison.
 
-Both configurations abstained on all 10 multi-hop questions. High faithfulness on non-abstained answers does not imply high overall correctness. R4 improves paraphrases markedly but sacrifices identifier correctness relative to R1.
+| Measure | R1 BM25 | Original R4 | Aligned R4 |
+|---|---:|---:|---:|
+| Correctness | .560 | .620 | .500 |
+| Faithfulness, non-abstentions | .988 | .950 | .956 |
+| Answer relevance | .557 | .595 | .502 |
+| Abstention rate | .600 | .500 | .660 |
+
+| Category | R1 correctness | Original R4 correctness | Aligned R4 correctness |
+|---|---:|---:|---:|
+| Identifier | .800 | .500 | .100 |
+| Paraphrase | .300 | .900 | .900 |
+| Multi-hop | .000 | .000 | .000 |
+| Version | .700 | .700 | .500 |
+| Unanswerable | 1.000 | 1.000 | 1.000 |
+
+The aligned R4 pipeline achieved .500 correctness, compared with .620 in the original R4 evaluation. It abstained on 66% of the questions, including all ten multi-hop questions and seven identifier questions.
+
+The corrected result is lower, but it is more representative of the actual test-generation pipeline. R4 still performs well on paraphrase and unanswerable questions, while exact identifiers and multi-hop questions remain difficult.
+
+The original R4 score should not be used as the expected performance of the submitted test pipeline. These scores are from development questions; test-set correctness is unknown.
 
 ## Failure analysis and judge verification
 
-See `task3_manual_review_and_failures.md` for the ten judge checks and five detailed cases. Summary:
+The ten judge-check examples and five failure cases in task3_manual_review_and_failures.md come from the original R4 evaluation, before the development pipeline was aligned with test generation. They are kept as evidence of that earlier run, not as failure examples from the aligned evaluation. For example, dev087 originally produced an answer using the wrong component's setting, while the aligned run abstained. The original-run cases are summarized below.
 
 | Question | Likely cause | Observation |
 |---|---|---|
@@ -81,11 +89,23 @@ The team's manual verification and sign-off on ten judge decisions remains neces
 
 ## Deployment recommendation
 
-Deploy **R4 hybrid with BM25 weight .25 and dense weight .75** among the tested configurations: highest observed overall retrieval recall (.642) and precision (.615), and higher answer correctness (.620) than R1 (.560). R1 is preferable for some identifier-focused queries; future improvements could use query-type routing or more reliable multi-hop retrieval. R5 as implemented adds complexity and query embedding calls without measurable recall improvement. Deployment should acknowledge the 0/10 multi-hop correctness result, not assume readiness for all query types.
+R4 hybrid with BM25 weight .25 and dense weight .75 remains our selected retrieval configuration because it achieved the highest observed overall retrieval recall (.642) and precision (.615) among the tested configurations.
+
+However, after aligning the development and test generation pipelines, R4 achieved only .500 answer correctness, compared with .560 for R1 and .620 for the original, mismatched R4 evaluation.
+
+Therefore, R4 is our preferred retrieval configuration, but we cannot claim that it is the best end-to-end answering system based on the corrected evaluation. Its main weaknesses are exact identifier questions and multi-hop questions. R5 also added complexity without improving retrieval recall.
+
+Further improvements should focus on reducing unnecessary abstentions, retrieving related documents for multi-hop questions, and testing whether different retrieval strategies work better for different question types.
 
 ## Test predictions
 
-The test-generation script reported validation of 100 records in `task3_rag/predictions_test.jsonl`, with `id`, `answer` and `retrieved_doc_ids`. Test ground truth is unavailable, so no test correctness or recall score is claimed. Confirm the file is present in the merged branch and the final ZIP.
+The file `task3_rag/predictions_test.jsonl` contains 100 test predictions. Validation confirmed 100 unique question IDs, five unique retrieved document IDs per question, and non-empty answers.
+
+The saved test predictions were generated using the original test pipeline. Issue #21 introduced a shared implementation matching that pipeline's chunk selection, prompt, and answer-token limit. The existing test predictions were preserved rather than regenerated.
+
+The aligned development answers are saved in `task3_rag/results/answers_r4_aligned.jsonl`, and the new judge results are saved in `task3_rag/results/judge_r4_aligned.jsonl`. Original evaluation results were retained separately.
+
+Validation confirmed that all 100 test predictions have unique question IDs, five distinct retrieved document IDs per question, and non-empty answers. All 500 retrieved document IDs were also checked against the 932-document corpus and found to be valid. Test ground truth is unavailable, so no test correctness or recall score is claimed.
 
 ## Final checklist
 
@@ -99,12 +119,14 @@ The test-generation script reported validation of 100 records in `task3_rag/pred
 
 ## Two-minute video script (approximate)
 
-“For Task 3, we built and compared five retrieval configurations over 932 fictional PaderQueue documents. The development set had 150 questions, covering identifiers, paraphrases, multi-hop, version questions and unanswerable questions. We evaluated retrieval at k equals five.
+For Task 3, we built and compared five retrieval configurations over 932 fictional PaderQueue documents. The development set had 150 questions covering identifiers, paraphrases, multi-hop, version questions and unanswerable questions. We evaluated retrieval at k equals five.
 
-R1 uses BM25; R2 uses fixed-size chunks and dense embeddings; and R3 uses recursive chunks and dense embeddings. We compared three R3 chunk sizes: 300, 600 and 1000. Their overall recall was similar, with 300 giving the best precision among the R3 settings.
+R1 uses BM25, R2 uses fixed-size chunks and dense embeddings, and R3 uses recursive chunks and dense embeddings. We compared three R3 chunk sizes: 300, 600 and 1000. Their overall recall was similar, with 300 giving the best precision among the R3 settings.
 
-We then combined BM25 and dense retrieval in R4 using normalized weighted scores. We tested BM25 weights of 0.25, 0.50 and 0.75. The 0.25 weight gave our highest overall recall, 0.642, and precision, 0.615. Our R5 query-rewriting method rewrote 32 questions but did not improve retrieval recall.
+We then combined BM25 and dense retrieval in R4 using normalized weighted scores. We tested BM25 weights of 0.25, 0.50 and 0.75. The 0.25 weight gave our highest overall recall, 0.642, and precision, 0.615. R5 query rewriting changed 32 questions but did not improve retrieval recall.
 
-For end-to-end evaluation, we generated answers for the same 50 development questions using R1 and R4 and scored them with the provided LLM judge. R4 achieved 62 percent correctness compared with 56 percent for R1. R4 was much better on paraphrases, but R1 remained stronger on exact identifiers.
+For end-to-end evaluation, we generated answers for the same 50 development questions using R1 and R4 and scored them with the provided LLM judge. The original R4 evaluation showed 62 percent correctness, but its pipeline did not match the test-prediction pipeline. After aligning them, R4 achieved 50 percent correctness, compared with 56 percent for R1. R4 remained strong on paraphrase questions but struggled with exact identifiers.
 
-Our main failure pattern was multi-hop reasoning: both systems got zero of ten multi-hop questions correct. We examined cases where the first incident was retrieved but the linked error documentation was missing, as well as cases where the model used the wrong setting. We recommend R4 overall, while acknowledging this limitation and the need for stronger multi-step retrieval. We generated and validated 100 test predictions. We used AI assistance for coding and analysis, and checked the results using the provided evaluation scripts.”
+Multi-hop questions were another major weakness: both R1 and aligned R4 got zero out of ten correct. Our earlier failure analysis showed cases where relevant documents were missing or the model used the wrong setting. Those examples came from the original R4 run, so we keep them separate from the aligned results.
+
+We recommend R4 as the strongest retrieval configuration we tested, with 0.642 recall and 0.615 precision. However, the corrected evaluation does not show that R4 is the best system for generating answers. We would need to improve identifier handling and multi-hop retrieval before making that claim. We also generated 100 test predictions and verified that their retrieved document IDs exist in the corpus. We used AI assistance for coding and analysis and checked the results using the evaluation scripts.
