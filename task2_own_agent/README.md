@@ -205,6 +205,17 @@ observation, invalid response/error, human feedback, step-limit, and finish even
 Together, these records can reconstruct the custom protocol execution; the shared
 client's `chat` records also capture gateway-level response metadata.
 
+## Submitted site and retained evidence
+
+`logs/run_03.jsonl` is the complete run that produced the submitted
+`site/index.html`. Keep it with the site in the submission. `run_01.jsonl` and
+`run_02.jsonl` are distinct earlier experiments, not duplicate copies; they remain
+in the repository. No experiment logs are removed by this cleanup.
+
+The unused `style_guide_summary.json` was removed. The agent retrieves rules from
+the 55 source Markdown documents in `style_guide/` through `search_style_guide`;
+there is no precomputed-summary substitute for that retrieval step.
+
 ## Known limitations
 
 - The RAG index is rebuilt and embeddings are requested each time the agent starts;
