@@ -7,3 +7,5 @@ __pycache__/
 logs/*.jsonl.tmp
 .vscode
 .DS_Store
+.ruff_cache/
+/opencode.json
