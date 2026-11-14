@@ -6,14 +6,18 @@ This document records ten judge-check examples and five failure cases from the o
 
 The examples below are kept as evidence of the original run. They should not be treated as failure cases from the aligned evaluation. For example, the original dev087 answer used `snapshotter.max_connections`, while the aligned run abstained.
 
-Source: uploaded `task3_final_results.zip`. The analysis used the supplied ground truth, generated answers, judge reasons, and five generation contexts. This was an assistant-assisted review; a team member still needs to independently confirm ten judge decisions to meet the manual-check requirement.
+Source: uploaded `task3_final_results.zip`. Mohammed Awez completed the human review on 2026-11-13, checking all ten judge decisions against the questions, ground truths, generated answers, judge reasoning, and saved generation contexts. All ten decisions were confirmed.
 
-## Ten judge decisions to check
+## Ten judge decisions — reviewer confirmation
+
+**Reviewer:** Mohammed Awez
+**Date:** 2026-11-13
+**Decision:** Agree with all ten judge decisions.
 
 | ID | Category | Judge correct | Review | Reason |
 |---|---|---:|---|---|
 | dev004 | paraphrase | 1 | Agree | Correct setting `dlq.max_retries` appears in context. |
-| dev008 | identifier | 0 | Agree | Wrong: answer denies default; 4.x context contains `interval_s = 10` (example setting, not an explicit default row). |
+| dev008 | identifier | 0 | Agree | Agree: the answer incorrectly denies the default of 10. The selected context contains an example `interval_s = 10`, but omits the authoritative `Default | 10` row from document d0171. Context selection was incomplete; the contribution of generation is uncertain. |
 | dev013 | unanswerable | 1 | Agree | Correct exact required abstention for an unanswerable question. |
 | dev025 | multi-hop | 0 | Agree | Wrong abstention: incident references PQ-E1915 but error-catalogue fix absent. |
 | dev030 | multi-hop | 0 | Agree | Wrong abstention: requested incident INC-2025-175 not in the five contexts. |
@@ -37,7 +41,7 @@ Source: uploaded `task3_final_results.zip`. The analysis used the supplied groun
 - Ground truth: `10`
 - Generated answer: In PaderQueue 4.x, the documentation does not specify the default for `metrics.interval_s`.
 - Judge: correctness 0.0; It says the default is not specified, but the ground truth is 10.
-- Manual-review rationale: Wrong: answer denies default; 4.x context contains `interval_s = 10` (example setting, not an explicit default row).
+- Manual-review rationale: Agree: the answer incorrectly denies the default of 10. The selected context contains an example `interval_s = 10`, but omits the authoritative `Default | 10` row from document d0171. Context selection was incomplete; the contribution of generation is uncertain.
 
 #### dev013 — unanswerable
 - Question: What is the default value of `spool.queue_capacity`?
@@ -101,7 +105,7 @@ The classification is based on whether the required answer evidence appears in t
 
 | ID | Failure type | Evidence | Proposed fix |
 |---|---|---|---|
-| dev008 | Generation / context interpretation | 4.x context contains `[metrics] interval_s = 10`, but generator says default unspecified; 2.x context shows 300, creating version ambiguity. | Keep full default-property rows; prompt for explicit version-specific evidence and avoid declaring unknown when 4.x value is visible. |
+| dev008 | Context/chunk selection; possible generation error | Document d0171 was retrieved, but the selected generation context included the example `interval_s = 10` and omitted its authoritative `Default | 10` row. A 2.x value of 300 also appeared. The exact contribution of generation is uncertain. | Include the authoritative 4.x default row and require version-specific evidence. |
 | dev025 | Retrieval (second hop) | Correct incident INC-2024-171 and linked PQ-E1915 are in context, but PQ-E1915 catalogue fix is absent. | Follow extracted error code with a second exact-code retrieval and include its catalogue entry. |
 | dev030 | Retrieval (first hop) | No supplied context contains INC-2025-175; five unrelated incidents were retrieved. | Exact-match identifier boosting for incident ID, then follow the referenced error code. |
 | dev068 | Retrieval (authoritative source) | Forum and postmortems mention PQ-E4007 but error-catalogue fix is not in context. | Prioritize error catalogue for fix questions and fetch exact PQ-E4007 page. |
@@ -138,7 +142,7 @@ R5 query rewriting did not improve overall retrieval recall compared with R4 (bo
 
 ## Remaining deliverables
 
-- Confirm the ten judge decisions manually as a team member; record reviewer and date.
-- Complete token-per-query estimates and cost/latency table; distinguish cached and uncached indexing.
+- [x] Ten judge decisions confirmed by Mohammed Awez on 2026-11-13.
+- [x] Token estimates and cost/latency comparison completed under Issue #18.
 - [x] Generate and validate 100 test predictions, including checking all 500 retrieved document IDs against the 932-document corpus.
 - Update submission README/STATUS and record brief video explanation.
