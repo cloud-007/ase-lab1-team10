@@ -84,3 +84,22 @@ Run all commands from this directory (the repository root).
 - Never commit or submit your `.env` / API keys.
 - Don't use agent or RAG frameworks (LangChain, LlamaIndex, ...) in Tasks 2–4.
 - Every group member must be able to explain every part of the submission.
+
+## Repository cleanup and submission evidence
+
+The disposable `hello-agent/opencode.json` setup copy was removed because it was
+byte-identical to the retained `task1_opencode/opencode.json` template. The
+hello-world exercise in the Task 1 instructions can still recreate that local
+folder and copy the template; the original instructions and conversation evidence
+are retained.
+
+Keep required datasets and starter helpers, the Task 2 complete site-generation
+run (`task2_own_agent/logs/run_03.jsonl`), and the final Task 4 real and mock run
+bundles. Task 4 intentionally stores `final.diff` both at the required submission
+path and inside the self-contained real run bundle audited by
+`task4_tools/check_evidence.py`; both copies must remain. Earlier Task 2 runs are
+also retained as distinct experiments. See each task's README for evidence details.
+
+Exclude local `.DS_Store`, root `opencode.json`, `.env`, virtual environments,
+caches, and the generated `task4_tools/workspace/` from commits and submission
+packaging. The tracked Task 1 config template is required and remains included.
