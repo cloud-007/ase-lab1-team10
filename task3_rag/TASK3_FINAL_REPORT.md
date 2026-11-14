@@ -46,30 +46,32 @@ A complete test-prediction run processed 100 questions, made 200 gateway calls, 
 
 ## End-to-end answer evaluation
 
-The same stratified 50-question development sample was used for R1 and R4, with `judge.py --sample 50`. Faithfulness excludes abstentions.
+R4 and R5 were selected for end-to-end evaluation because they tied for the highest overall retrieval recall (.642); R4 had slightly higher precision (.615 versus .614). R1 was retained as a lexical baseline, not counted as one of the two best retrieval configurations. All three were judged on the same stratified 50-question development sample using `judge.py --sample 50`. Faithfulness excludes abstentions.
 
 During the pipeline alignment work (issue #21), we found that the original R4 development answers and test predictions were generated differently. The original development pipeline selected document IDs from saved retrieval results and then chose a chunk within each document using BM25. The test pipeline directly ranked chunks using hybrid scores and selected the highest-ranked chunk from each of five different documents. The prompts and answer-token limits also differed.
 
 We introduced a shared R4 pipeline so development evaluation and test generation use the same chunk selection, prompt, and 400-token answer limit. We regenerated and evaluated the 50 development answers. The original evaluation results are preserved for comparison.
 
-| Measure | R1 BM25 | Original R4 | Aligned R4 |
-|---|---:|---:|---:|
-| Correctness | .560 | .620 | .500 |
-| Faithfulness, non-abstentions | .988 | .950 | .956 |
-| Answer relevance | .557 | .595 | .502 |
-| Abstention rate | .600 | .500 | .660 |
+| Measure | R1 BM25 | Original R4 | Aligned R4 | R5 rewrite |
+|---|---:|---:|---:|---:|
+| Correctness | .560 | .620 | .500 | .630 |
+| Faithfulness, non-abstentions | .988 | .950 | .956 | .938 |
+| Answer relevance | .557 | .595 | .502 | .581 |
+| Abstention rate | .600 | .500 | .660 | .520 |
 
-| Category | R1 correctness | Original R4 correctness | Aligned R4 correctness |
-|---|---:|---:|---:|
-| Identifier | .800 | .500 | .100 |
-| Paraphrase | .300 | .900 | .900 |
-| Multi-hop | .000 | .000 | .000 |
-| Version | .700 | .700 | .500 |
-| Unanswerable | 1.000 | 1.000 | 1.000 |
+| Category | R1 correctness | Original R4 correctness | Aligned R4 correctness | R5 correctness |
+|---|---:|---:|---:|---:|
+| Identifier | .800 | .500 | .100 | .550 |
+| Paraphrase | .300 | .900 | .900 | .900 |
+| Multi-hop | .000 | .000 | .000 | .000 |
+| Version | .700 | .700 | .500 | .700 |
+| Unanswerable | 1.000 | 1.000 | 1.000 | 1.000 |
 
 The aligned R4 pipeline achieved .500 correctness, compared with .620 in the original R4 evaluation. It abstained on 66% of the questions, including all ten multi-hop questions and seven identifier questions.
 
 The corrected result is lower, but it is more representative of the actual test-generation pipeline. R4 still performs well on paraphrase and unanswerable questions, while exact identifiers and multi-hop questions remain difficult.
+
+R5 achieved .630 correctness, the highest of these saved end-to-end evaluations. However, R5 answers were generated from saved retrieved document IDs using BM25 chunk selection and the original generation prompt (up to 1200 answer tokens), whereas aligned R4 uses direct hybrid chunk selection and a 400-token limit. Therefore, the difference cannot be attributed to retrieval alone. All ten multi-hop questions remained incorrect for R5.
 
 The original R4 score should not be used as the expected performance of the submitted test pipeline. These scores are from development questions; test-set correctness is unknown.
 
@@ -89,13 +91,13 @@ The team's manual verification and sign-off on ten judge decisions remains neces
 
 ## Deployment recommendation
 
-R4 hybrid with BM25 weight .25 and dense weight .75 remains our selected retrieval configuration because it achieved the highest observed overall retrieval recall (.642) and precision (.615) among the tested configurations.
+R4 hybrid (BM25 weight .25) and R5 query rewriting tied for the highest observed retrieval recall (.642). R4 had slightly higher retrieval precision (.615 versus .614), so R4 remains our preferred retrieval configuration when considering retrieval metrics and simplicity. R5 adds query-rewriting complexity without improving overall retrieval recall.
 
-However, after aligning the development and test generation pipelines, R4 achieved only .500 answer correctness, compared with .560 for R1 and .620 for the original, mismatched R4 evaluation.
+For end-to-end answering, R5 achieved the highest measured correctness (.630), compared with .560 for the R1 baseline and .500 for aligned R4. However, R5 used BM25-based chunk selection and the original generation prompt with a 1200-token limit, while aligned R4 used hybrid chunk selection and a 400-token limit. Therefore, this comparison does not establish that R5 retrieval itself is better.
 
-Therefore, R4 is our preferred retrieval configuration, but we cannot claim that it is the best end-to-end answering system based on the corrected evaluation. Its main weaknesses are exact identifier questions and multi-hop questions. R5 also added complexity without improving retrieval recall.
+We recommend R4 as the simpler retrieval choice based on the measured retrieval results, but cannot confidently select the best end-to-end answering system without evaluating both contenders under a consistent generation protocol. Multi-hop questions remain a major weakness: all three evaluated configurations scored zero on that category.
 
-Further improvements should focus on reducing unnecessary abstentions, retrieving related documents for multi-hop questions, and testing whether different retrieval strategies work better for different question types.
+Further improvements should focus on retrieving related documents for multi-hop questions, reducing unnecessary abstentions, and comparing R4 and R5 with the same answer-generation settings.
 
 ## Test predictions
 
@@ -126,7 +128,7 @@ R1 uses BM25, R2 uses fixed-size chunks and dense embeddings, and R3 uses recurs
 
 We then combined BM25 and dense retrieval in R4 using normalized weighted scores. We tested BM25 weights of 0.25, 0.50 and 0.75. The 0.25 weight gave our highest overall recall, 0.642, and precision, 0.615. R5 query rewriting changed 32 questions but did not improve retrieval recall.
 
-For end-to-end evaluation, we generated answers for the same 50 development questions using R1 and R4 and scored them with the provided LLM judge. The original R4 evaluation showed 62 percent correctness, but its pipeline did not match the test-prediction pipeline. After aligning them, R4 achieved 50 percent correctness, compared with 56 percent for R1. R4 remained strong on paraphrase questions but struggled with exact identifiers.
+For end-to-end evaluation, we selected R4 and R5 because both reached .642 retrieval recall, and kept R1 as a baseline. We judged all three on the same 50 development questions. R1 achieved 56 percent correctness, aligned R4 achieved 50 percent, and R5 achieved 63 percent. The original R4 evaluation had shown 62 percent, but used a different generation pipeline. R5 also uses different generation settings from aligned R4, so the scores do not prove that R5 retrieval is better.
 
 Multi-hop questions were another major weakness: both R1 and aligned R4 got zero out of ten correct. Our earlier failure analysis showed cases where relevant documents were missing or the model used the wrong setting. Those examples came from the original R4 run, so we keep them separate from the aligned results.
 
