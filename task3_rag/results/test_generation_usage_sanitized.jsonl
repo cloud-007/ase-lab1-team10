@@ -1,0 +1,200 @@
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 1.174}
+{"type": "chat", "usage": {"prompt_tokens": 509, "completion_tokens": 49, "reasoning_tokens": 30, "cached_prompt_tokens": 0}, "cost_usd": 7.539999999999999e-05, "cache_hit": false, "duration_s": 2.206}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.253}
+{"type": "chat", "usage": {"prompt_tokens": 538, "completion_tokens": 320, "reasoning_tokens": 306, "cached_prompt_tokens": 0}, "cost_usd": 0.00021380000000000002, "cache_hit": false, "duration_s": 4.772}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.344}
+{"type": "chat", "usage": {"prompt_tokens": 492, "completion_tokens": 19, "reasoning_tokens": 0, "cached_prompt_tokens": 0}, "cost_usd": 5.87e-05, "cache_hit": false, "duration_s": 2.472}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.359}
+{"type": "chat", "usage": {"prompt_tokens": 512, "completion_tokens": 373, "reasoning_tokens": 340, "cached_prompt_tokens": 0}, "cost_usd": 0.00023769999999999998, "cache_hit": false, "duration_s": 6.74}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.413}
+{"type": "chat", "usage": {"prompt_tokens": 394, "completion_tokens": 45, "reasoning_tokens": 31, "cached_prompt_tokens": 0}, "cost_usd": 6.19e-05, "cache_hit": false, "duration_s": 2.269}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.166}
+{"type": "chat", "usage": {"prompt_tokens": 527, "completion_tokens": 48, "reasoning_tokens": 34, "cached_prompt_tokens": 0}, "cost_usd": 7.67e-05, "cache_hit": false, "duration_s": 1.849}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.241}
+{"type": "chat", "usage": {"prompt_tokens": 469, "completion_tokens": 46, "reasoning_tokens": 32, "cached_prompt_tokens": 0}, "cost_usd": 6.989999999999999e-05, "cache_hit": false, "duration_s": 2.773}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.236}
+{"type": "chat", "usage": {"prompt_tokens": 458, "completion_tokens": 37, "reasoning_tokens": 23, "cached_prompt_tokens": 0}, "cost_usd": 6.429999999999999e-05, "cache_hit": false, "duration_s": 2.201}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.233}
+{"type": "chat", "usage": {"prompt_tokens": 496, "completion_tokens": 55, "reasoning_tokens": 41, "cached_prompt_tokens": 0}, "cost_usd": 7.71e-05, "cache_hit": false, "duration_s": 2.083}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.361}
+{"type": "chat", "usage": {"prompt_tokens": 523, "completion_tokens": 49, "reasoning_tokens": 35, "cached_prompt_tokens": 0}, "cost_usd": 7.68e-05, "cache_hit": false, "duration_s": 2.421}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.15}
+{"type": "chat", "usage": {"prompt_tokens": 479, "completion_tokens": 58, "reasoning_tokens": 44, "cached_prompt_tokens": 0}, "cost_usd": 7.69e-05, "cache_hit": false, "duration_s": 1.924}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.179}
+{"type": "chat", "usage": {"prompt_tokens": 470, "completion_tokens": 39, "reasoning_tokens": 25, "cached_prompt_tokens": 0}, "cost_usd": 6.649999999999999e-05, "cache_hit": false, "duration_s": 1.851}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.211}
+{"type": "chat", "usage": {"prompt_tokens": 440, "completion_tokens": 30, "reasoning_tokens": 16, "cached_prompt_tokens": 0}, "cost_usd": 5.9e-05, "cache_hit": false, "duration_s": 1.734}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.212}
+{"type": "chat", "usage": {"prompt_tokens": 524, "completion_tokens": 50, "reasoning_tokens": 36, "cached_prompt_tokens": 0}, "cost_usd": 7.74e-05, "cache_hit": false, "duration_s": 2.248}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.222}
+{"type": "chat", "usage": {"prompt_tokens": 527, "completion_tokens": 43, "reasoning_tokens": 29, "cached_prompt_tokens": 0}, "cost_usd": 7.42e-05, "cache_hit": false, "duration_s": 2.48}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.23}
+{"type": "chat", "usage": {"prompt_tokens": 519, "completion_tokens": 48, "reasoning_tokens": 27, "cached_prompt_tokens": 0}, "cost_usd": 7.59e-05, "cache_hit": false, "duration_s": 2.229}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.208}
+{"type": "chat", "usage": {"prompt_tokens": 560, "completion_tokens": 202, "reasoning_tokens": 185, "cached_prompt_tokens": 0}, "cost_usd": 0.000157, "cache_hit": false, "duration_s": 3.707}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.18}
+{"type": "chat", "usage": {"prompt_tokens": 526, "completion_tokens": 41, "reasoning_tokens": 27, "cached_prompt_tokens": 0}, "cost_usd": 7.31e-05, "cache_hit": false, "duration_s": 2.011}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.141}
+{"type": "chat", "usage": {"prompt_tokens": 473, "completion_tokens": 54, "reasoning_tokens": 40, "cached_prompt_tokens": 0}, "cost_usd": 7.429999999999999e-05, "cache_hit": false, "duration_s": 2.025}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.235}
+{"type": "chat", "usage": {"prompt_tokens": 484, "completion_tokens": 39, "reasoning_tokens": 25, "cached_prompt_tokens": 0}, "cost_usd": 6.79e-05, "cache_hit": false, "duration_s": 3.45}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.173}
+{"type": "chat", "usage": {"prompt_tokens": 404, "completion_tokens": 28, "reasoning_tokens": 14, "cached_prompt_tokens": 0}, "cost_usd": 5.44e-05, "cache_hit": false, "duration_s": 2.103}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.157}
+{"type": "chat", "usage": {"prompt_tokens": 491, "completion_tokens": 40, "reasoning_tokens": 27, "cached_prompt_tokens": 0}, "cost_usd": 6.91e-05, "cache_hit": false, "duration_s": 2.058}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.283}
+{"type": "chat", "usage": {"prompt_tokens": 496, "completion_tokens": 30, "reasoning_tokens": 16, "cached_prompt_tokens": 0}, "cost_usd": 6.46e-05, "cache_hit": false, "duration_s": 1.876}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.25}
+{"type": "chat", "usage": {"prompt_tokens": 475, "completion_tokens": 45, "reasoning_tokens": 31, "cached_prompt_tokens": 0}, "cost_usd": 7e-05, "cache_hit": false, "duration_s": 1.882}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.142}
+{"type": "chat", "usage": {"prompt_tokens": 517, "completion_tokens": 40, "reasoning_tokens": 0, "cached_prompt_tokens": 0}, "cost_usd": 7.17e-05, "cache_hit": false, "duration_s": 2.087}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.11}
+{"type": "chat", "usage": {"prompt_tokens": 374, "completion_tokens": 41, "reasoning_tokens": 27, "cached_prompt_tokens": 0}, "cost_usd": 5.79e-05, "cache_hit": false, "duration_s": 1.907}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.252}
+{"type": "chat", "usage": {"prompt_tokens": 517, "completion_tokens": 54, "reasoning_tokens": 32, "cached_prompt_tokens": 0}, "cost_usd": 7.869999999999999e-05, "cache_hit": false, "duration_s": 2.213}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.174}
+{"type": "chat", "usage": {"prompt_tokens": 418, "completion_tokens": 54, "reasoning_tokens": 27, "cached_prompt_tokens": 0}, "cost_usd": 6.879999999999999e-05, "cache_hit": false, "duration_s": 2.24}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.24}
+{"type": "chat", "usage": {"prompt_tokens": 405, "completion_tokens": 12, "reasoning_tokens": 0, "cached_prompt_tokens": 0}, "cost_usd": 4.649999999999999e-05, "cache_hit": false, "duration_s": 1.832}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.186}
+{"type": "chat", "usage": {"prompt_tokens": 449, "completion_tokens": 112, "reasoning_tokens": 98, "cached_prompt_tokens": 0}, "cost_usd": 0.0001009, "cache_hit": false, "duration_s": 2.482}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.16}
+{"type": "chat", "usage": {"prompt_tokens": 507, "completion_tokens": 52, "reasoning_tokens": 25, "cached_prompt_tokens": 0}, "cost_usd": 7.67e-05, "cache_hit": false, "duration_s": 2.015}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.219}
+{"type": "chat", "usage": {"prompt_tokens": 470, "completion_tokens": 37, "reasoning_tokens": 23, "cached_prompt_tokens": 0}, "cost_usd": 6.549999999999999e-05, "cache_hit": false, "duration_s": 1.999}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 1.027}
+{"type": "chat", "usage": {"prompt_tokens": 520, "completion_tokens": 48, "reasoning_tokens": 34, "cached_prompt_tokens": 0}, "cost_usd": 7.6e-05, "cache_hit": false, "duration_s": 2.434}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 3.508}
+{"type": "chat", "usage": {"prompt_tokens": 486, "completion_tokens": 38, "reasoning_tokens": 24, "cached_prompt_tokens": 0}, "cost_usd": 6.759999999999999e-05, "cache_hit": false, "duration_s": 2.0}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.277}
+{"type": "chat", "usage": {"prompt_tokens": 473, "completion_tokens": 53, "reasoning_tokens": 39, "cached_prompt_tokens": 0}, "cost_usd": 7.38e-05, "cache_hit": false, "duration_s": 2.197}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.18}
+{"type": "chat", "usage": {"prompt_tokens": 379, "completion_tokens": 12, "reasoning_tokens": 0, "cached_prompt_tokens": 0}, "cost_usd": 4.3899999999999996e-05, "cache_hit": false, "duration_s": 1.866}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.228}
+{"type": "chat", "usage": {"prompt_tokens": 383, "completion_tokens": 12, "reasoning_tokens": 0, "cached_prompt_tokens": 0}, "cost_usd": 4.429999999999999e-05, "cache_hit": false, "duration_s": 2.087}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.222}
+{"type": "chat", "usage": {"prompt_tokens": 498, "completion_tokens": 39, "reasoning_tokens": 25, "cached_prompt_tokens": 0}, "cost_usd": 6.93e-05, "cache_hit": false, "duration_s": 1.952}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.355}
+{"type": "chat", "usage": {"prompt_tokens": 406, "completion_tokens": 53, "reasoning_tokens": 24, "cached_prompt_tokens": 0}, "cost_usd": 6.71e-05, "cache_hit": false, "duration_s": 2.62}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.247}
+{"type": "chat", "usage": {"prompt_tokens": 435, "completion_tokens": 79, "reasoning_tokens": 62, "cached_prompt_tokens": 0}, "cost_usd": 8.3e-05, "cache_hit": false, "duration_s": 3.836}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.19}
+{"type": "chat", "usage": {"prompt_tokens": 555, "completion_tokens": 78, "reasoning_tokens": 62, "cached_prompt_tokens": 0}, "cost_usd": 9.449999999999999e-05, "cache_hit": false, "duration_s": 2.466}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.239}
+{"type": "chat", "usage": {"prompt_tokens": 393, "completion_tokens": 37, "reasoning_tokens": 23, "cached_prompt_tokens": 0}, "cost_usd": 5.7799999999999995e-05, "cache_hit": false, "duration_s": 1.928}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.19}
+{"type": "chat", "usage": {"prompt_tokens": 486, "completion_tokens": 51, "reasoning_tokens": 37, "cached_prompt_tokens": 0}, "cost_usd": 7.41e-05, "cache_hit": false, "duration_s": 2.133}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.187}
+{"type": "chat", "usage": {"prompt_tokens": 367, "completion_tokens": 12, "reasoning_tokens": 0, "cached_prompt_tokens": 0}, "cost_usd": 4.2699999999999994e-05, "cache_hit": false, "duration_s": 2.809}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.191}
+{"type": "chat", "usage": {"prompt_tokens": 551, "completion_tokens": 47, "reasoning_tokens": 24, "cached_prompt_tokens": 0}, "cost_usd": 7.86e-05, "cache_hit": false, "duration_s": 2.272}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.134}
+{"type": "chat", "usage": {"prompt_tokens": 452, "completion_tokens": 96, "reasoning_tokens": 68, "cached_prompt_tokens": 0}, "cost_usd": 9.32e-05, "cache_hit": false, "duration_s": 2.226}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.232}
+{"type": "chat", "usage": {"prompt_tokens": 437, "completion_tokens": 127, "reasoning_tokens": 113, "cached_prompt_tokens": 0}, "cost_usd": 0.0001072, "cache_hit": false, "duration_s": 2.94}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.127}
+{"type": "chat", "usage": {"prompt_tokens": 471, "completion_tokens": 48, "reasoning_tokens": 34, "cached_prompt_tokens": 0}, "cost_usd": 7.11e-05, "cache_hit": false, "duration_s": 2.124}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.208}
+{"type": "chat", "usage": {"prompt_tokens": 483, "completion_tokens": 39, "reasoning_tokens": 25, "cached_prompt_tokens": 0}, "cost_usd": 6.78e-05, "cache_hit": false, "duration_s": 2.448}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.226}
+{"type": "chat", "usage": {"prompt_tokens": 399, "completion_tokens": 55, "reasoning_tokens": 28, "cached_prompt_tokens": 0}, "cost_usd": 6.74e-05, "cache_hit": false, "duration_s": 2.951}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.24}
+{"type": "chat", "usage": {"prompt_tokens": 435, "completion_tokens": 41, "reasoning_tokens": 27, "cached_prompt_tokens": 0}, "cost_usd": 6.4e-05, "cache_hit": false, "duration_s": 2.008}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.14}
+{"type": "chat", "usage": {"prompt_tokens": 516, "completion_tokens": 154, "reasoning_tokens": 97, "cached_prompt_tokens": 0}, "cost_usd": 0.0001286, "cache_hit": false, "duration_s": 3.59}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.228}
+{"type": "chat", "usage": {"prompt_tokens": 450, "completion_tokens": 31, "reasoning_tokens": 17, "cached_prompt_tokens": 0}, "cost_usd": 6.049999999999999e-05, "cache_hit": false, "duration_s": 1.98}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.147}
+{"type": "chat", "usage": {"prompt_tokens": 400, "completion_tokens": 12, "reasoning_tokens": 0, "cached_prompt_tokens": 0}, "cost_usd": 4.599999999999999e-05, "cache_hit": false, "duration_s": 1.618}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.22}
+{"type": "chat", "usage": {"prompt_tokens": 587, "completion_tokens": 56, "reasoning_tokens": 40, "cached_prompt_tokens": 0}, "cost_usd": 8.669999999999999e-05, "cache_hit": false, "duration_s": 2.17}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.127}
+{"type": "chat", "usage": {"prompt_tokens": 437, "completion_tokens": 56, "reasoning_tokens": 44, "cached_prompt_tokens": 0}, "cost_usd": 7.17e-05, "cache_hit": false, "duration_s": 2.292}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.641}
+{"type": "chat", "usage": {"prompt_tokens": 510, "completion_tokens": 12, "reasoning_tokens": 0, "cached_prompt_tokens": 0}, "cost_usd": 5.7e-05, "cache_hit": false, "duration_s": 1.873}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.156}
+{"type": "chat", "usage": {"prompt_tokens": 447, "completion_tokens": 15, "reasoning_tokens": 0, "cached_prompt_tokens": 0}, "cost_usd": 5.2199999999999995e-05, "cache_hit": false, "duration_s": 2.313}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.216}
+{"type": "chat", "usage": {"prompt_tokens": 412, "completion_tokens": 57, "reasoning_tokens": 29, "cached_prompt_tokens": 0}, "cost_usd": 6.97e-05, "cache_hit": false, "duration_s": 2.639}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.223}
+{"type": "chat", "usage": {"prompt_tokens": 455, "completion_tokens": 40, "reasoning_tokens": 0, "cached_prompt_tokens": 0}, "cost_usd": 6.549999999999999e-05, "cache_hit": false, "duration_s": 3.639}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.172}
+{"type": "chat", "usage": {"prompt_tokens": 526, "completion_tokens": 45, "reasoning_tokens": 31, "cached_prompt_tokens": 0}, "cost_usd": 7.51e-05, "cache_hit": false, "duration_s": 2.017}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.241}
+{"type": "chat", "usage": {"prompt_tokens": 512, "completion_tokens": 82, "reasoning_tokens": 68, "cached_prompt_tokens": 0}, "cost_usd": 9.219999999999999e-05, "cache_hit": false, "duration_s": 2.601}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.128}
+{"type": "chat", "usage": {"prompt_tokens": 423, "completion_tokens": 27, "reasoning_tokens": 0, "cached_prompt_tokens": 0}, "cost_usd": 5.58e-05, "cache_hit": false, "duration_s": 1.706}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.21}
+{"type": "chat", "usage": {"prompt_tokens": 496, "completion_tokens": 17, "reasoning_tokens": 0, "cached_prompt_tokens": 0}, "cost_usd": 5.81e-05, "cache_hit": false, "duration_s": 1.765}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.148}
+{"type": "chat", "usage": {"prompt_tokens": 440, "completion_tokens": 283, "reasoning_tokens": 269, "cached_prompt_tokens": 0}, "cost_usd": 0.0001855, "cache_hit": false, "duration_s": 5.394}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.153}
+{"type": "chat", "usage": {"prompt_tokens": 478, "completion_tokens": 30, "reasoning_tokens": 0, "cached_prompt_tokens": 0}, "cost_usd": 6.28e-05, "cache_hit": false, "duration_s": 1.869}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.238}
+{"type": "chat", "usage": {"prompt_tokens": 369, "completion_tokens": 30, "reasoning_tokens": 16, "cached_prompt_tokens": 0}, "cost_usd": 5.1899999999999994e-05, "cache_hit": false, "duration_s": 1.642}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.138}
+{"type": "chat", "usage": {"prompt_tokens": 433, "completion_tokens": 11, "reasoning_tokens": 0, "cached_prompt_tokens": 0}, "cost_usd": 4.8799999999999994e-05, "cache_hit": false, "duration_s": 4.289}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.149}
+{"type": "chat", "usage": {"prompt_tokens": 523, "completion_tokens": 21, "reasoning_tokens": 0, "cached_prompt_tokens": 0}, "cost_usd": 6.28e-05, "cache_hit": false, "duration_s": 3.33}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.229}
+{"type": "chat", "usage": {"prompt_tokens": 523, "completion_tokens": 50, "reasoning_tokens": 36, "cached_prompt_tokens": 0}, "cost_usd": 7.73e-05, "cache_hit": false, "duration_s": 3.456}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.234}
+{"type": "chat", "usage": {"prompt_tokens": 458, "completion_tokens": 151, "reasoning_tokens": 107, "cached_prompt_tokens": 0}, "cost_usd": 0.0001213, "cache_hit": false, "duration_s": 3.696}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.148}
+{"type": "chat", "usage": {"prompt_tokens": 374, "completion_tokens": 12, "reasoning_tokens": 0, "cached_prompt_tokens": 0}, "cost_usd": 4.34e-05, "cache_hit": false, "duration_s": 1.801}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.233}
+{"type": "chat", "usage": {"prompt_tokens": 450, "completion_tokens": 35, "reasoning_tokens": 0, "cached_prompt_tokens": 0}, "cost_usd": 6.25e-05, "cache_hit": false, "duration_s": 2.199}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.233}
+{"type": "chat", "usage": {"prompt_tokens": 387, "completion_tokens": 63, "reasoning_tokens": 34, "cached_prompt_tokens": 0}, "cost_usd": 7.02e-05, "cache_hit": false, "duration_s": 2.439}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.133}
+{"type": "chat", "usage": {"prompt_tokens": 528, "completion_tokens": 40, "reasoning_tokens": 0, "cached_prompt_tokens": 0}, "cost_usd": 7.28e-05, "cache_hit": false, "duration_s": 2.588}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.143}
+{"type": "chat", "usage": {"prompt_tokens": 492, "completion_tokens": 24, "reasoning_tokens": 0, "cached_prompt_tokens": 0}, "cost_usd": 6.12e-05, "cache_hit": false, "duration_s": 1.874}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.137}
+{"type": "chat", "usage": {"prompt_tokens": 448, "completion_tokens": 12, "reasoning_tokens": 0, "cached_prompt_tokens": 0}, "cost_usd": 5.08e-05, "cache_hit": false, "duration_s": 1.579}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.229}
+{"type": "chat", "usage": {"prompt_tokens": 507, "completion_tokens": 198, "reasoning_tokens": 184, "cached_prompt_tokens": 0}, "cost_usd": 0.0001497, "cache_hit": false, "duration_s": 3.354}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.119}
+{"type": "chat", "usage": {"prompt_tokens": 405, "completion_tokens": 42, "reasoning_tokens": 28, "cached_prompt_tokens": 0}, "cost_usd": 6.149999999999999e-05, "cache_hit": false, "duration_s": 2.071}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.136}
+{"type": "chat", "usage": {"prompt_tokens": 433, "completion_tokens": 28, "reasoning_tokens": 14, "cached_prompt_tokens": 0}, "cost_usd": 5.73e-05, "cache_hit": false, "duration_s": 2.498}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.226}
+{"type": "chat", "usage": {"prompt_tokens": 470, "completion_tokens": 30, "reasoning_tokens": 0, "cached_prompt_tokens": 0}, "cost_usd": 6.199999999999999e-05, "cache_hit": false, "duration_s": 2.037}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.114}
+{"type": "chat", "usage": {"prompt_tokens": 500, "completion_tokens": 24, "reasoning_tokens": 0, "cached_prompt_tokens": 0}, "cost_usd": 6.199999999999999e-05, "cache_hit": false, "duration_s": 1.888}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.232}
+{"type": "chat", "usage": {"prompt_tokens": 396, "completion_tokens": 71, "reasoning_tokens": 49, "cached_prompt_tokens": 0}, "cost_usd": 7.51e-05, "cache_hit": false, "duration_s": 2.553}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.138}
+{"type": "chat", "usage": {"prompt_tokens": 474, "completion_tokens": 67, "reasoning_tokens": 53, "cached_prompt_tokens": 0}, "cost_usd": 8.09e-05, "cache_hit": false, "duration_s": 2.386}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.183}
+{"type": "chat", "usage": {"prompt_tokens": 444, "completion_tokens": 41, "reasoning_tokens": 27, "cached_prompt_tokens": 0}, "cost_usd": 6.489999999999999e-05, "cache_hit": false, "duration_s": 1.735}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.106}
+{"type": "chat", "usage": {"prompt_tokens": 499, "completion_tokens": 60, "reasoning_tokens": 46, "cached_prompt_tokens": 0}, "cost_usd": 7.99e-05, "cache_hit": false, "duration_s": 2.277}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.372}
+{"type": "chat", "usage": {"prompt_tokens": 591, "completion_tokens": 23, "reasoning_tokens": 0, "cached_prompt_tokens": 0}, "cost_usd": 7.06e-05, "cache_hit": false, "duration_s": 5.355}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.193}
+{"type": "chat", "usage": {"prompt_tokens": 432, "completion_tokens": 12, "reasoning_tokens": 0, "cached_prompt_tokens": 0}, "cost_usd": 4.92e-05, "cache_hit": false, "duration_s": 5.042}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.216}
+{"type": "chat", "usage": {"prompt_tokens": 346, "completion_tokens": 12, "reasoning_tokens": 0, "cached_prompt_tokens": 0}, "cost_usd": 4.06e-05, "cache_hit": false, "duration_s": 3.609}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.149}
+{"type": "chat", "usage": {"prompt_tokens": 469, "completion_tokens": 33, "reasoning_tokens": 19, "cached_prompt_tokens": 0}, "cost_usd": 6.34e-05, "cache_hit": false, "duration_s": 3.005}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.145}
+{"type": "chat", "usage": {"prompt_tokens": 406, "completion_tokens": 12, "reasoning_tokens": 0, "cached_prompt_tokens": 0}, "cost_usd": 4.6599999999999994e-05, "cache_hit": false, "duration_s": 1.553}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.149}
+{"type": "chat", "usage": {"prompt_tokens": 507, "completion_tokens": 12, "reasoning_tokens": 0, "cached_prompt_tokens": 0}, "cost_usd": 5.6699999999999996e-05, "cache_hit": false, "duration_s": 2.166}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.208}
+{"type": "chat", "usage": {"prompt_tokens": 478, "completion_tokens": 51, "reasoning_tokens": 37, "cached_prompt_tokens": 0}, "cost_usd": 7.329999999999999e-05, "cache_hit": false, "duration_s": 2.014}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.142}
+{"type": "chat", "usage": {"prompt_tokens": 419, "completion_tokens": 12, "reasoning_tokens": 0, "cached_prompt_tokens": 0}, "cost_usd": 4.79e-05, "cache_hit": false, "duration_s": 1.555}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.37}
+{"type": "chat", "usage": {"prompt_tokens": 487, "completion_tokens": 125, "reasoning_tokens": 85, "cached_prompt_tokens": 0}, "cost_usd": 0.00011119999999999999, "cache_hit": false, "duration_s": 2.917}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 1.136}
+{"type": "chat", "usage": {"prompt_tokens": 529, "completion_tokens": 45, "reasoning_tokens": 31, "cached_prompt_tokens": 0}, "cost_usd": 7.54e-05, "cache_hit": false, "duration_s": 2.011}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.126}
+{"type": "chat", "usage": {"prompt_tokens": 503, "completion_tokens": 51, "reasoning_tokens": 25, "cached_prompt_tokens": 0}, "cost_usd": 7.58e-05, "cache_hit": false, "duration_s": 2.681}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.17}
+{"type": "chat", "usage": {"prompt_tokens": 384, "completion_tokens": 30, "reasoning_tokens": 0, "cached_prompt_tokens": 0}, "cost_usd": 5.34e-05, "cache_hit": false, "duration_s": 3.548}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.144}
+{"type": "chat", "usage": {"prompt_tokens": 497, "completion_tokens": 38, "reasoning_tokens": 24, "cached_prompt_tokens": 0}, "cost_usd": 6.869999999999999e-05, "cache_hit": false, "duration_s": 3.414}
+{"type": "embedding", "cost_usd": 0.0, "duration_s": 0.135}
+{"type": "chat", "usage": {"prompt_tokens": 386, "completion_tokens": 54, "reasoning_tokens": 26, "cached_prompt_tokens": 0}, "cost_usd": 6.56e-05, "cache_hit": false, "duration_s": 2.233}

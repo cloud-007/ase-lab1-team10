@@ -28,6 +28,8 @@ R3 recursive 300 and 1000 both reach .562 overall recall; recursive 300 has high
 
 ## Indexing and query latency
 
+The indexing times and query latencies below are **measured** values from `task3_rag/results/timing_*.json`. Query times measure **retrieval only**, not answer generation or judging. R2's median was not recorded and cannot be recovered from its saved summary. R4's three timing files repeat measurements from one shared run, not three separate indexing runs.
+
 | Configuration | Indexing time | Median retrieval query time | Caveat |
 |---|---:|---:|---|
 | R1 BM25 | 0.162 s | 0.009 s | Local index |
@@ -42,7 +44,46 @@ Gateway rate-limit retries substantially increased some mean and maximum times. 
 
 ### Token usage and answer-generation cost
 
-A complete test-prediction run processed 100 questions, made 200 gateway calls, and used 46,688 prompt tokens plus 5,592 completion tokens: **52,280 tokens total, or 522.8 per question**. Reported gateway charge: **$0.00746 total, or $0.0000746 per question**. Median **end-to-end** test-question latency was **2.476 s**, which includes retrieval and answer generation and is not comparable to retrieval-only median times above. These are measured for the test-generation run; token counts for all R1–R5 retrieval configurations and the separate judge runs were not measured and must not be presented as though they were.
+Token estimates below are reproducible with `python task3_rag/estimate_tokens.py`. The script uses `cl100k_base` through `common.llm_client.count_tokens`; these are **calculated estimates**, not gateway-reported embedding token measurements. The development set contains 150 original questions totalling **2,758 estimated tokens** (18.39 per question). Index estimates count the exact chunk text sent for embedding, including document headers.
+
+| Configuration | Estimated indexing tokens | Estimated original-query embedding tokens | Additional query tokens |
+|---|---:|---:|---|
+| R1 BM25 | 0 (local index) | 0 (local retrieval) | None |
+| R2 fixed 600 | 143,901 | 2,758 | None |
+| R3 recursive 300 | 181,271 | 2,758 | None |
+| R3 recursive 600 | 144,143 | 2,758 | None |
+| R3 recursive 1000 | 137,230 | 2,758 | None |
+| R4 hybrid .25/.50/.75 | 181,271 shared | 2,758 shared | None |
+| R5 rewrite | 0 newly embedded (cached R3 recursive-300 index) | 2,758 | 32 rewrites; 256 illustrative extra tokens (3,014 total query tokens); historical total unavailable |
+
+R4's three weight settings reuse one dense index and one set of 150 query embeddings. Neither should be counted three times. R5 reuses the cached R3 recursive-300 dense index and embeds 150 original questions plus 32 rewritten queries.
+
+**Query-token scope:** The estimates above cover indexing text and retrieval-query embeddings only. They exclude answer generation and judging, which are reported separately below. R1 uses local BM25 and therefore has zero embedding API tokens, not zero locally processed text. R2, R3 and R4 average 18.39 estimated original-query embedding tokens per question.
+
+**R5 rewrite estimate:** The 32 historical rewritten texts were not saved, so their actual token total is unavailable. The script builds 215 candidate rewrites from corpus identifiers and R5 templates (6-11 tokens each; candidate median 8). Assuming 8 tokens for each of the 32 rewrites gives 256 additional tokens, or **3,014 estimated query embedding tokens across 150 questions (20.09 per question)**. This is an illustrative calculation, not a recovered measurement or a proven range for the historical queries.
+
+Cost reproduction: run `python task3_rag/summarize_gateway_logs.py` with these four local files: `logs/generate_r1_bm25.jsonl`, `logs/generate_r4_hybrid_bm25_025_aligned.jsonl`, `logs/judge_answers_r1_bm25.jsonl`, and `logs/judge_answers_r4_aligned.jsonl`. These logs contain prompts and retrieved context, so they are not committed. Historical costs cannot be independently recalculated from the repository alone without the corresponding logs.
+
+The saved gateway logs separately provide **measured** token usage and costs for answer generation and LLM judging on the 50-question development evaluation. Completion token totals already include any reported reasoning tokens.
+
+| Measured metric | R1 BM25 | Aligned R4 |
+|---|---:|---:|
+| Answer-generation chat calls | 50 | 50 |
+| Generation prompt tokens | 23,472 | 23,155 |
+| Generation completion tokens | 2,670 | 3,130 |
+| Generation total chat tokens | 26,142 | 26,285 |
+| Generation chat cost | $0.0036822 | $0.0038805 |
+| Judge chat calls | 120 | 117 |
+| Judge prompt tokens | 24,748 | 23,244 |
+| Judge completion tokens | 10,328 | 11,449 |
+| Judge total chat tokens | 35,076 | 34,693 |
+| Judge chat cost | $0.0076388 | $0.0080489 |
+| Judge relevance embedding calls | 50 | 50 |
+| Recorded generation and judging cost | $0.0113210 | $0.0119294 |
+
+Judging uses correctness and answer relevance for each question, plus faithfulness for non-abstentions; malformed judge responses can also trigger retries. Therefore, judge API calls are not the number of questions evaluated. The logs report **$0 embedding charges**, but do not report embedding token usage. These are costs recorded for the named development runs, not complete historical costs for every retrieval configuration. Historical generation and judging costs for R2, R3 and R5 remain unavailable.
+
+Separately, a complete **test-prediction** run processed 100 questions, made 200 gateway calls, and used 46,688 prompt tokens plus 5,592 completion tokens: **52,280 measured chat tokens total, or 522.8 per question**. Reported gateway charge: **$0.00746 total, or $0.0000746 per question**. Median **end-to-end** test-question latency was **2.476 s**, including retrieval and answer generation; it is not comparable to the retrieval-only medians above. This test run is separate from the 50-question development measurements.
 
 ## End-to-end answer evaluation
 
